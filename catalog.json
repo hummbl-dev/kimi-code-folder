@@ -254,33 +254,54 @@
     "integration_docs": [
       {
         "file": ".github/copilot-instructions.md",
-        "purpose": "GitHub Copilot collaboration guide",
-        "size_kb": 6
+        "title": "GitHub Copilot Integration Guide",
+        "audience": ["ai-assistants", "users"],
+        "size_kb": 6,
+        "purpose": "How Copilot should collaborate with Kimi Code"
       },
       {
         "file": "COPILOT-CONTEXT.md",
-        "purpose": "Condensed AI assistant reference",
-        "size_kb": 2
+        "title": "AI Assistant Context Reference",
+        "audience": ["ai-assistants"],
+        "size_kb": 2,
+        "purpose": "Ultra-condensed reference for AI context windows"
       },
       {
         "file": "QUICK-REFERENCE.md",
-        "purpose": "One-page cheat sheet",
-        "size_kb": 5
+        "title": "One-page Cheat Sheet",
+        "audience": ["users", "agents"],
+        "size_kb": 5,
+        "purpose": "Quick lookup for tools, skills, templates, patterns"
+      },
+      {
+        "file": "PERSPECTIVE.md",
+        "title": "Reuben Bowlby - Operational Model & Communication Style",
+        "audience": ["agents", "ai-assistants"],
+        "size_kb": 16,
+        "purpose": "How Reuben works: decision patterns, agency model, role definitions, execution protocols"
       },
       {
         "file": "catalog.json",
-        "purpose": "Machine-readable catalog",
-        "size_kb": 8
+        "title": "Machine-readable Documentation Index",
+        "audience": ["systems", "agents"],
+        "format": "json",
+        "size_kb": 8,
+        "purpose": "Index for tool/skill/doc discovery"
       }
     ],
-    "total_size_kb": 99,
-    "total_lines": 4300
+    "total_size_kb": 107,
+    "total_lines": 4500
   },
   
   "metadata": {
     "created": "2026-02-05",
     "last_updated": "2026-02-05",
     "schema_version": "1.0",
-    "catalog_type": "kimi_code_documentation"
+    "catalog_type": "kimi_code_documentation",
+    "total_documentation_files": 12,
+    "organization": "Hummbl",
+    "primary_audience": "AI agents",
+    "repository": "https://github.com/hummbl-dev/kimi-code-folder",
+    "integration_status": "Production-ready"
   }
 }
