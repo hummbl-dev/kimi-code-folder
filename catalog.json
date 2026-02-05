@@ -1,0 +1,286 @@
+{
+  "name": "Kimi Code CLI",
+  "version": "1.8.0",
+  "description": "Autonomous AI coding agent by MoonshotAI with parallel execution and specialized skills",
+  "repository": "https://github.com/MoonshotAI/kimi-cli",
+  "documentation": "https://moonshotai.github.io/kimi-cli",
+  "license": "Apache-2.0",
+  
+  "tools": [
+    {
+      "name": "ReadFile",
+      "category": "file_operations",
+      "description": "Read file content with optional line range",
+      "parameters": ["path", "line_offset?", "n_lines?"],
+      "use_cases": ["code review", "debugging", "understanding codebase"]
+    },
+    {
+      "name": "WriteFile",
+      "category": "file_operations",
+      "description": "Create or overwrite file with content",
+      "parameters": ["path", "content"],
+      "use_cases": ["create new files", "complete rewrites"]
+    },
+    {
+      "name": "StrReplaceFile",
+      "category": "file_operations",
+      "description": "Replace exact string with new string (literal matching)",
+      "parameters": ["path", "old_string", "new_string"],
+      "use_cases": ["surgical edits", "refactoring", "bug fixes"],
+      "constraints": ["exact_match_required", "includes_whitespace"]
+    },
+    {
+      "name": "Grep",
+      "category": "search",
+      "description": "Search for pattern in files",
+      "parameters": ["pattern", "path?", "flags?"],
+      "use_cases": ["find code", "locate TODOs", "search errors"]
+    },
+    {
+      "name": "Glob",
+      "category": "search",
+      "description": "Pattern-based file search",
+      "parameters": ["pattern", "base_path?"],
+      "use_cases": ["find files by name", "find by extension", "locate tests"]
+    },
+    {
+      "name": "Shell",
+      "category": "execution",
+      "description": "Execute shell commands",
+      "parameters": ["command", "timeout?"],
+      "use_cases": ["run tests", "install dependencies", "build project", "git operations"]
+    },
+    {
+      "name": "SearchWeb",
+      "category": "web",
+      "description": "Query search engines for information",
+      "parameters": ["query"],
+      "use_cases": ["latest documentation", "error solutions", "API references"]
+    },
+    {
+      "name": "FetchURL",
+      "category": "web",
+      "description": "Retrieve webpage content",
+      "parameters": ["url"],
+      "use_cases": ["read documentation", "fetch API specs", "get changelogs"]
+    },
+    {
+      "name": "ReadMediaFile",
+      "category": "media",
+      "description": "Process images, audio, and video files",
+      "parameters": ["path", "type"],
+      "use_cases": ["OCR from screenshots", "extract image text", "analyze diagrams"]
+    },
+    {
+      "name": "Task",
+      "category": "orchestration",
+      "description": "Spawn parallel subagent for independent work",
+      "parameters": ["task_description"],
+      "use_cases": ["parallel execution", "context isolation", "independent sub-tasks"],
+      "constraints": ["subagents_isolated", "report_to_parent_only"]
+    }
+  ],
+  
+  "skills": [
+    {
+      "name": "vercel-deploy",
+      "category": "deployment",
+      "description": "Deploy applications to Vercel platform",
+      "triggers": ["deploy", "vercel", "publish"],
+      "requires": ["vercel_token"]
+    },
+    {
+      "name": "pdf",
+      "category": "media",
+      "description": "Process PDF files (extract text, parse structure)",
+      "triggers": ["pdf", "extract pdf", "read pdf"]
+    },
+    {
+      "name": "speech",
+      "category": "media",
+      "description": "Speech-to-text transcription",
+      "triggers": ["transcribe", "audio", "speech to text"]
+    },
+    {
+      "name": "web-screenshot",
+      "category": "media",
+      "description": "Capture webpage screenshots",
+      "triggers": ["screenshot", "capture website", "webpage image"]
+    },
+    {
+      "name": "image-generation",
+      "category": "media",
+      "description": "Generate images using DALL-E",
+      "triggers": ["generate image", "create picture", "draw"],
+      "requires": ["openai_api_key"]
+    },
+    {
+      "name": "context-fetcher",
+      "category": "utility",
+      "description": "Smart documentation and context retrieval",
+      "triggers": ["fetch context", "get docs", "retrieve documentation"]
+    }
+  ],
+  
+  "operational_model": {
+    "execution": {
+      "type": "parallel",
+      "description": "Can spawn multiple subagents for independent tasks",
+      "constraints": [
+        "Subagents have isolated context",
+        "Parent orchestrates and synthesizes",
+        "No inter-subagent communication"
+      ]
+    },
+    "file_modification": {
+      "strategy": "read_then_replace",
+      "matching": "exact_literal",
+      "description": "Always reads file first to ensure exact match before replacement"
+    },
+    "error_handling": {
+      "tiers": [
+        {
+          "level": "transient",
+          "examples": ["network errors", "file locks"],
+          "action": "auto_retry"
+        },
+        {
+          "level": "logic",
+          "examples": ["wrong file", "bad string match"],
+          "action": "adjust_and_retry"
+        },
+        {
+          "level": "blocker",
+          "examples": ["missing dependencies", "unclear requirements"],
+          "action": "report_with_diagnostics"
+        }
+      ]
+    }
+  },
+  
+  "integration": {
+    "vscode": {
+      "extension_id": "moonshot-ai.kimi-code",
+      "marketplace": "https://marketplace.visualstudio.com/items?itemName=moonshot-ai.kimi-code"
+    },
+    "github_copilot": {
+      "instructions_file": ".github/copilot-instructions.md",
+      "context_file": "COPILOT-CONTEXT.md",
+      "collaboration_model": "complementary"
+    },
+    "mcp": {
+      "protocol": "Model Context Protocol",
+      "description": "Connects to MCP servers for extended capabilities"
+    }
+  },
+  
+  "use_cases": {
+    "multi_file_refactoring": {
+      "example": "Refactor authentication across 10 files",
+      "approach": "parallel_subagents"
+    },
+    "autonomous_debugging": {
+      "example": "Find and fix failing tests",
+      "approach": "iterative_execution"
+    },
+    "deployment": {
+      "example": "Deploy to Vercel and verify",
+      "approach": "skill_based"
+    },
+    "codebase_exploration": {
+      "example": "Analyze all API routes for security issues",
+      "approach": "parallel_search"
+    },
+    "complex_workflows": {
+      "example": "Implement feature, test, document, deploy",
+      "approach": "orchestrated_steps"
+    }
+  },
+  
+  "best_practices": {
+    "effective_requests": [
+      "Be specific about outcomes, not methods",
+      "Mention file paths when known",
+      "State constraints clearly",
+      "Request verification steps",
+      "Frame parallel-friendly tasks"
+    ],
+    "anti_patterns": [
+      "Over-specifying implementation details",
+      "Vague requests without context",
+      "No success criteria",
+      "Ignoring reported blockers"
+    ]
+  },
+  
+  "documentation": {
+    "core_docs": [
+      {
+        "file": "README.md",
+        "purpose": "Overview and getting started",
+        "size_kb": 4
+      },
+      {
+        "file": "ARCHITECTURE.md",
+        "purpose": "Internal model and design",
+        "size_kb": 12
+      },
+      {
+        "file": "USER-GUIDE.md",
+        "purpose": "Effective usage patterns",
+        "size_kb": 10
+      },
+      {
+        "file": "TOOLS.md",
+        "purpose": "Complete tool reference",
+        "size_kb": 14
+      },
+      {
+        "file": "SKILLS.md",
+        "purpose": "Skills catalog with triggers",
+        "size_kb": 14
+      },
+      {
+        "file": "BEST-PRACTICES.md",
+        "purpose": "Patterns and anti-patterns",
+        "size_kb": 10
+      },
+      {
+        "file": "EXAMPLES.md",
+        "purpose": "Scenario-based examples",
+        "size_kb": 14
+      }
+    ],
+    "integration_docs": [
+      {
+        "file": ".github/copilot-instructions.md",
+        "purpose": "GitHub Copilot collaboration guide",
+        "size_kb": 6
+      },
+      {
+        "file": "COPILOT-CONTEXT.md",
+        "purpose": "Condensed AI assistant reference",
+        "size_kb": 2
+      },
+      {
+        "file": "QUICK-REFERENCE.md",
+        "purpose": "One-page cheat sheet",
+        "size_kb": 5
+      },
+      {
+        "file": "catalog.json",
+        "purpose": "Machine-readable catalog",
+        "size_kb": 8
+      }
+    ],
+    "total_size_kb": 99,
+    "total_lines": 4300
+  },
+  
+  "metadata": {
+    "created": "2026-02-05",
+    "last_updated": "2026-02-05",
+    "schema_version": "1.0",
+    "catalog_type": "kimi_code_documentation"
+  }
+}
