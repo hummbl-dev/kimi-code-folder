@@ -432,7 +432,8 @@ def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False,
         elif tier == "tier3":
             weights = (0.0, 1.0, 0.0, 0.0)  # Pure keyword
         else:  # hybrid
-            weights = (0.5, 0.3, 0.2, 0.0)  # 50% embed, 30% keyword, 20% tfidf
+            # Phase 2: Reduced embedding influence for better disambiguation
+            weights = (0.35, 0.45, 0.2, 0.0)  # 35% embed, 45% keyword, 20% tfidf
     
     w_embed, w_kw, w_tfidf, w_cx = weights
     

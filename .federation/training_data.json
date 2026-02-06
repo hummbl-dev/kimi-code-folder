@@ -794,5 +794,181 @@
   {
     "task": "Refactor to use async/await",
     "agent": "copilot"
+  },
+  {
+    "task": "Create architecture decision record for caching strategy",
+    "agent": "claude"
+  },
+  {
+    "task": "Create ADR for database migration approach",
+    "agent": "claude"
+  },
+  {
+    "task": "Create comprehensive architecture RFC for microservices",
+    "agent": "claude"
+  },
+  {
+    "task": "Create technical specification document",
+    "agent": "claude"
+  },
+  {
+    "task": "Create design document for new feature",
+    "agent": "claude"
+  },
+  {
+    "task": "Create API specification and review with team",
+    "agent": "claude"
+  },
+  {
+    "task": "Create security audit report",
+    "agent": "claude"
+  },
+  {
+    "task": "Create deployment runbook documentation",
+    "agent": "claude"
+  },
+  {
+    "task": "Create runbook then review for accuracy",
+    "agent": "claude"
+  },
+  {
+    "task": "Create incident response plan document",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess technical debt and create remediation plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess system performance and create optimization plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess security posture and create hardening plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess scalability limits and create scaling plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess code quality and create refactoring plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Stub out the test cases for validation logic",
+    "agent": "ollama"
+  },
+  {
+    "task": "Stub test framework then validate approach",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate ideas for error handling patterns",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate error handling concepts for review",
+    "agent": "ollama"
+  },
+  {
+    "task": "Prototype the React component for user profile",
+    "agent": "ollama"
+  },
+  {
+    "task": "Prototype UI concept then gather feedback",
+    "agent": "ollama"
+  },
+  {
+    "task": "Draft the API specification for authentication",
+    "agent": "ollama"
+  },
+  {
+    "task": "Draft spec outline then review with stakeholders",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm naming conventions for endpoints",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm API naming then finalize choices",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch database schema for inventory system",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch data model then validate constraints",
+    "agent": "ollama"
+  },
+  {
+    "task": "Experiment with CSS layout for dashboard",
+    "agent": "ollama"
+  },
+  {
+    "task": "Experiment with grid layout then implement",
+    "agent": "ollama"
+  },
+  {
+    "task": "Research authentication patterns then implement OAuth2",
+    "agent": "kimi"
+  },
+  {
+    "task": "Study OAuth2 specification then build the flow",
+    "agent": "kimi"
+  },
+  {
+    "task": "Evaluate caching solutions then implement Redis",
+    "agent": "kimi"
+  },
+  {
+    "task": "Survey monitoring tools then deploy Datadog",
+    "agent": "kimi"
+  },
+  {
+    "task": "Compare queue architectures then implement RabbitMQ",
+    "agent": "kimi"
+  },
+  {
+    "task": "Assess orchestration options then migrate to Kubernetes",
+    "agent": "kimi"
+  },
+  {
+    "task": "Review API patterns then refactor endpoints",
+    "agent": "kimi"
+  },
+  {
+    "task": "Examine security issues then patch vulnerabilities",
+    "agent": "kimi"
+  },
+  {
+    "task": "Survey frontend frameworks then migrate to React",
+    "agent": "kimi"
+  },
+  {
+    "task": "Research GDPR requirements then implement compliance",
+    "agent": "kimi"
+  },
+  {
+    "task": "Document RFC then implement the changes",
+    "agent": "kimi"
+  },
+  {
+    "task": "Plan architecture then build the system",
+    "agent": "kimi"
+  },
+  {
+    "task": "Design schema then create the database",
+    "agent": "kimi"
+  },
+  {
+    "task": "Specify requirements then develop the feature",
+    "agent": "kimi"
+  },
+  {
+    "task": "Map user flows then build the interface",
+    "agent": "kimi"
   }
 ]
