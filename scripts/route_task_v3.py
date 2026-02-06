@@ -105,10 +105,10 @@ def get_ollama_embedding(text: str, model: str = "mistral:latest") -> list[float
             headers={"Content-Type": "application/json"},
             method="POST"
         )
-        with urllib.request.urlopen(req, timeout=5) as response:
+        with urllib.request.urlopen(req, timeout=30) as response:
             result = json.loads(response.read().decode())
             return result.get("embedding")
-    except Exception:
+    except Exception as e:
         return None
 
 def cosine_similarity_vectors(a: list[float], b: list[float]) -> float:
