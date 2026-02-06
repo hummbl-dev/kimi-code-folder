@@ -1,0 +1,135 @@
+{
+  "idf": {
+    "validation": 2.504077396776274,
+    "service": 2.504077396776274,
+    "upload": 2.504077396776274,
+    "file": 2.504077396776274,
+    "build": 2.09861228866811,
+    "connection": 2.504077396776274,
+    "pool": 2.504077396776274,
+    "condition": 2.504077396776274,
+    "bug": 2.504077396776274,
+    "race": 2.504077396776274,
+    "fix": 2.504077396776274,
+    "markdown": 2.504077396776274,
+    "html": 2.504077396776274,
+    "create": 2.09861228866811,
+    "cli": 2.504077396776274,
+    "tool": 2.504077396776274,
+    "converts": 2.504077396776274,
+    "limiting": 2.504077396776274,
+    "middleware": 2.504077396776274,
+    "rate": 2.504077396776274,
+    "express": 2.504077396776274,
+    "implement": 2.09861228866811,
+    "tests": 2.504077396776274,
+    "scratch": 2.504077396776274,
+    "oauth": 2.504077396776274,
+    "flow": 2.504077396776274,
+    "database": 2.504077396776274,
+    "migration": 2.504077396776274,
+    "script": 2.504077396776274,
+    "postgresql": 2.504077396776274,
+    "integration": 2.504077396776274,
+    "develop": 2.504077396776274,
+    "redis": 2.504077396776274,
+    "caching": 2.504077396776274,
+    "layer": 2.504077396776274,
+    "processing": 2.504077396776274,
+    "module": 2.504077396776274,
+    "end": 2.504077396776274,
+    "payment": 2.504077396776274
+  },
+  "documents": [
+    {
+      "task": "Build a file upload service with validation",
+      "agent": "codex",
+      "tfidf": {
+        "build": 2.09861228866811,
+        "file": 2.504077396776274,
+        "upload": 2.504077396776274,
+        "service": 2.504077396776274,
+        "validation": 2.504077396776274
+      }
+    },
+    {
+      "task": "Fix the race condition bug in the connection pool",
+      "agent": "codex",
+      "tfidf": {
+        "fix": 2.504077396776274,
+        "race": 2.504077396776274,
+        "condition": 2.504077396776274,
+        "bug": 2.504077396776274,
+        "connection": 2.504077396776274,
+        "pool": 2.504077396776274
+      }
+    },
+    {
+      "task": "Create a CLI tool that converts markdown to HTML",
+      "agent": "codex",
+      "tfidf": {
+        "create": 2.09861228866811,
+        "cli": 2.504077396776274,
+        "tool": 2.504077396776274,
+        "converts": 2.504077396776274,
+        "markdown": 2.504077396776274,
+        "html": 2.504077396776274
+      }
+    },
+    {
+      "task": "Implement rate limiting middleware for Express",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 2.09861228866811,
+        "rate": 2.504077396776274,
+        "limiting": 2.504077396776274,
+        "middleware": 2.504077396776274,
+        "express": 2.504077396776274
+      }
+    },
+    {
+      "task": "Implement OAuth2 flow from scratch with tests",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 2.09861228866811,
+        "oauth": 2.504077396776274,
+        "flow": 2.504077396776274,
+        "scratch": 2.504077396776274,
+        "tests": 2.504077396776274
+      }
+    },
+    {
+      "task": "Create a database migration script for PostgreSQL",
+      "agent": "codex",
+      "tfidf": {
+        "create": 2.09861228866811,
+        "database": 2.504077396776274,
+        "migration": 2.504077396776274,
+        "script": 2.504077396776274,
+        "postgresql": 2.504077396776274
+      }
+    },
+    {
+      "task": "Develop a caching layer with Redis integration",
+      "agent": "codex",
+      "tfidf": {
+        "develop": 2.504077396776274,
+        "caching": 2.504077396776274,
+        "layer": 2.504077396776274,
+        "redis": 2.504077396776274,
+        "integration": 2.504077396776274
+      }
+    },
+    {
+      "task": "Build the payment processing module end to end",
+      "agent": "codex",
+      "tfidf": {
+        "build": 1.049306144334055,
+        "payment": 1.252038698388137,
+        "processing": 1.252038698388137,
+        "module": 1.252038698388137,
+        "end": 2.504077396776274
+      }
+    }
+  ]
+}

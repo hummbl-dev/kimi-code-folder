@@ -22,6 +22,9 @@
 | **Phase 4 Sprint 3** | ✅ Voting System COMPLETE |
 | **Phase 4 Sprint 4** | ✅ Analytics COMPLETE |
 | **Phase 4 Sprint 5** | ✅ Predictive Routing COMPLETE |
+| **Phase 5 Sprint 1** | 📝 Planning + Architecture (~10%) |
+| **Active Incidents** | INC-001: 🔴 Credential rotation in progress |
+| **SITREP Status** | 🟡 AMBER — Corrected by Claude 📚 |
 
 ---
 
@@ -185,6 +188,25 @@
 - Complete `.federation/` infrastructure
 - 1 escalated vote (tie on analytics order)
 - 1 resolved vote (python vs typescript → python wins)
+
+**Corrections & Quality Control:**
+- 🟡 **SITREP Review:** Claude 📚 corrected Kimi's initial SITREP
+  - Phase 5 progress: 40% → corrected to ~10% (RFC + scaffold only)
+  - Routing accuracy: "89%" was self-reported, not tested — needs evaluation harness
+  - Queue count discrepancy resolved: actual 1 pending, 3 done (not 4/5)
+  - Identity clarification: Kimi generated SITREP (not Copilot)
+  - Lesson: Cross-agent review for all SITREPs recommended
+
+**Active Incidents:**
+| ID | Severity | Description | Owner | Status |
+|----|----------|-------------|-------|--------|
+| INC-001 | 🔴 Critical | Credentials pushed to GitHub — rotation required | Reuben | In Progress |
+| INC-002 | 🟡 Medium | Agent coordination gap (symlink contradiction) | Federation | Monitoring |
+
+**Architecture Decisions:**
+| ID | Decision | Status |
+|----|----------|--------|
+| ADR-001 | No root-level symlinks in agent workspaces | ✅ Accepted |
 
 **Key Achievements:**
 - ✅ Phase 3: Federation Middleware — COMPLETE

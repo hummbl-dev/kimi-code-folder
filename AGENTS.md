@@ -12,6 +12,7 @@
 | **Copilot** | 💭 | Thinking, planning, review | Quick questions, IDE work, brainstorming | Free | Medium |
 | **Kimi** | 🔧 | Execution, implementation | Multi-file changes, deployment, testing | Low | Medium |
 | **Claude** | 📚 | Research, analysis, docs | Architecture, deep dives, documentation | Medium | Large |
+| **Codex** | 🧭 | Single-track deep execution | End-to-end features, focused modules, from-scratch builds | $20/mo | Large |
 | **Ollama** | 🏠 | Local, fast iteration | Drafts, prototyping, offline work | Free | Medium |
 
 ---
@@ -48,6 +49,20 @@
 - "Architecture for..."
 - "Compare options for..."
 - "Deep dive into..."
+
+**Example:** *"Research microservices patterns for our scale"* → 📚 Claude
+
+---
+
+### Use Codex 🧭 When:
+- "Build a complete..."
+- "Implement from scratch..."
+- "End-to-end feature..."
+- "Focused module..."
+- "Autonomous implementation..."
+- "Single-track deep work..."
+
+**Example:** *"Build a REST API from scratch with full CRUD"* → 🧭 Codex
 
 **Example:** *"Research microservices patterns for our scale"* → 📚 Claude
 
@@ -183,11 +198,66 @@ python3 scripts/fed-analytics.py dashboard
 - **Limitation:** Rate limits (use Copilot as fallback)
 - **Memory:** Session + identity stack
 
+### Codex 🧭
+- **Workspace:** `codex-code-folder/`
+- **Strength:** Single-track deep execution, end-to-end builds
+- **Limitation:** Not for parallel multi-file work (use Kimi)
+- **Memory:** Session + identity stack
+
 ### Ollama 🏠
 - **Location:** Local machine
 - **Strength:** Instant, free, offline
 - **Limitation:** Lower capability than cloud agents
 - **Memory:** None (stateless)
+
+---
+
+## 🔧 vs 🧭 Kimi vs Codex — When to Use Which
+
+Both are execution agents. The difference is **scope and parallelism**:
+
+| Factor | Kimi 🔧 | Codex 🧭 |
+|--------|---------|----------|
+| **File count** | 3+ files (parallel) | 1-2 files (deep) |
+| **Execution style** | Parallel tool calls | Sequential, focused |
+| **Built-in skills** | 33 skills | Core execution only |
+| **Best for** | Multi-module changes | Single-module depth |
+| **Example** | "Refactor auth across 5 files" | "Build auth module from scratch" |
+
+### Decision Flow
+
+```
+Task involves multiple files/modules?
+├── YES → Kimi 🔧
+└── NO → Single focused module?
+    ├── YES → Depth > 2 hours?
+    │   ├── YES → Codex 🧭
+    │   └── NO → Kimi 🔧 (faster)
+    └── NO → Copilot 💭 (quick edit)
+```
+
+### Handoff Patterns
+
+**Kimi → Codex:** Parallel scaffold done, needs deep single-module implementation
+```
+Kimi: Create API structure across 3 files
+↓
+Codex: Deep implement the complex business logic module
+```
+
+**Codex → Kimi:** Deep module done, needs integration across codebase
+```
+Codex: Build payment processing module
+↓
+Kimi: Integrate into 5 existing services
+```
+
+**Claude → Codex:** Architecture designed, ready for implementation
+```
+Claude: Design OAuth2 architecture
+↓
+Codex: Implement the auth service end-to-end
+```
 
 ---
 
@@ -202,9 +272,9 @@ python3 scripts/fed-analytics.py dashboard
 ---
 
 **Last Updated:** 2026-02-06  
-**Version:** 1.0  
+**Version:** 2.0  
 **Maintained By:** All federation agents
 
 ---
 
-*"Specialization is the key to federation success."* 🧭🔮⚡
+*"Five agents, one federation."* 🔧📚💭🧭🏠

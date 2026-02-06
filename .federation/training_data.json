@@ -1,0 +1,12 @@
+[
+  {"task": "Build a REST API for user management with full CRUD", "agent": "codex"},
+  {"task": "Implement a WebSocket chat server from this spec", "agent": "codex"},
+  {"task": "Create a CLI tool that converts markdown to HTML", "agent": "codex"},
+  {"task": "Fix the race condition bug in the connection pool", "agent": "codex"},
+  {"task": "Build the payment processing module end to end", "agent": "codex"},
+  {"task": "Implement OAuth2 flow from scratch with tests", "agent": "codex"},
+  {"task": "Create a database migration script for PostgreSQL", "agent": "codex"},
+  {"task": "Build a file upload service with validation", "agent": "codex"},
+  {"task": "Implement rate limiting middleware for Express", "agent": "codex"},
+  {"task": "Develop a caching layer with Redis integration", "agent": "codex"}
+]
