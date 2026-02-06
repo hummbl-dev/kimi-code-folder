@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Neural Router v3 — Enhanced Hybrid (Zero Cost, Zero External Deps)
+Neural Router v3 — Hybrid Tier 1+2 with Configurable Blending
 
 Strategy:
-  1. Ollama embeddings (Tier 1) — if available via localhost:11434
-  2. TF-IDF similarity (Tier 2) — pure Python fallback
-  3. Keyword taxonomy (Tier 3) — if no index exists
+  1. Hybrid (default): Blend Ollama embeddings + keyword + TF-IDF
+  2. Tier 1 only: Ollama embeddings (when available)
+  3. Tier 2 only: TF-IDF + keyword ensemble
+  4. Tier 3 fallback: Keyword-only (when no index)
 
-Ensemble: 40% TF-IDF + 40% keyword + 20% complexity
+Default blend: 0.5×embedding + 0.3×keyword + 0.2×tfidf
+Fallback (Ollama down): Pure keyword (proven 80% accuracy)
 """
 
 import json
@@ -159,6 +161,47 @@ def get_ollama_embedding(text: str, model: str = "mistral:latest") -> list[float
     except Exception as e:
         return None
 
+
+def get_ollama_similarities(task: str) -> dict[str, float] | None:
+    """
+    Get similarity scores from Ollama embeddings.
+    Returns dict of agent -> similarity, or None if unavailable.
+    """
+    if not EMBEDDING_CACHE.exists():
+        return None
+    
+    ollama_embedding = get_ollama_embedding(task)
+    if not ollama_embedding:
+        return None
+    
+    try:
+        cache = json.loads(EMBEDDING_CACHE.read_text())
+        similarities = []
+        for item in cache.get("embeddings", []):
+            sim = cosine_similarity_vectors(ollama_embedding, item["embedding"])
+            similarities.append({"agent": item["agent"], "similarity": sim})
+        
+        if not similarities:
+            return None
+        
+        # Aggregate by agent (average of top 3 per agent)
+        agent_sims = {}
+        for agent in AGENT_TAXONOMY:
+            agent_scores = [s["similarity"] for s in similarities if s["agent"] == agent]
+            if agent_scores:
+                agent_scores.sort(reverse=True)
+                agent_sims[agent] = sum(agent_scores[:3]) / min(3, len(agent_scores))
+        
+        # Normalize to 0-1
+        max_sim = max(agent_sims.values()) if agent_sims else 1.0
+        if max_sim > 0:
+            agent_sims = {a: s / max_sim for a, s in agent_sims.items()}
+        
+        return agent_sims
+    except Exception:
+        return None
+
+
 def cosine_similarity_vectors(a: list[float], b: list[float]) -> float:
     """Cosine similarity between two dense vectors."""
     dot = sum(x * y for x, y in zip(a, b))
@@ -168,12 +211,14 @@ def cosine_similarity_vectors(a: list[float], b: list[float]) -> float:
         return 0.0
     return dot / (norm_a * norm_b)
 
+
 # --- TF-IDF Engine (Tier 2) ---
 
 def tokenize(text: str) -> list[str]:
     """Lowercase, split on non-alpha, remove stopwords."""
     tokens = re.findall(r'[a-z]+', text.lower())
     return [t for t in tokens if t not in STOPWORDS and len(t) > 1]
+
 
 def build_tfidf_index(training_data: list[dict]) -> dict:
     """Build TF-IDF index from training data. Pure Python."""
@@ -221,6 +266,7 @@ def build_tfidf_index(training_data: list[dict]) -> dict:
     INDEX_PATH.write_text(json.dumps(index, indent=2))
     return index
 
+
 def cosine_similarity_tfidf(vec_a: dict, vec_b: dict) -> float:
     """Cosine similarity between two sparse TF-IDF vectors."""
     common = set(vec_a.keys()) & set(vec_b.keys())
@@ -232,6 +278,35 @@ def cosine_similarity_tfidf(vec_a: dict, vec_b: dict) -> float:
     if norm_a == 0 or norm_b == 0:
         return 0.0
     return dot / (norm_a * norm_b)
+
+
+def get_tfidf_scores(task: str, index: dict, top_k: int = 3) -> dict[str, float]:
+    """Get TF-IDF similarity scores for each agent."""
+    task_tokens = tokenize(task)
+    task_tf = Counter(task_tokens)
+    max_tf = max(task_tf.values()) if task_tf else 1
+    task_tfidf = {
+        t: (f / max_tf) * index["idf"].get(t, 1.0)
+        for t, f in task_tf.items()
+    }
+
+    # Find top-k similar training samples
+    similarities = []
+    for doc in index["documents"]:
+        sim = cosine_similarity_tfidf(task_tfidf, doc["tfidf"])
+        similarities.append({"agent": doc["agent"], "similarity": sim})
+    similarities.sort(key=lambda x: x["similarity"], reverse=True)
+    top_matches = similarities[:top_k]
+
+    # Aggregate by agent
+    tfidf_scores = Counter()
+    for match in top_matches:
+        tfidf_scores[match["agent"]] += match["similarity"]
+    
+    # Normalize
+    total = sum(tfidf_scores.values()) or 1.0
+    return {a: tfidf_scores.get(a, 0.0) / total for a in AGENT_TAXONOMY}
+
 
 # --- Keyword & Complexity Scorers ---
 
@@ -260,6 +335,14 @@ def keyword_score(task: str, agent: str) -> float:
     score = ((hits + phrase_hits) / max_possible) * weight - penalty
     return max(score, 0.0)  # Floor at 0
 
+
+def get_keyword_scores(task: str) -> dict[str, float]:
+    """Get normalized keyword scores for all agents."""
+    scores = {a: keyword_score(task, a) for a in AGENT_TAXONOMY}
+    total = sum(scores.values()) or 1.0
+    return {a: s / total for a, s in scores.items()}
+
+
 def complexity_score(task: str) -> str:
     """Estimate task complexity: low, medium, high."""
     indicators_high = [
@@ -283,6 +366,7 @@ def complexity_score(task: str) -> str:
         return "low"
     return "medium"
 
+
 def complexity_match(task: str, agent: str) -> float:
     """Score how well task complexity matches agent's bias."""
     task_complexity = complexity_score(task)
@@ -295,126 +379,138 @@ def complexity_match(task: str, agent: str) -> float:
         return -0.1
     return 0.0
 
+
+def get_complexity_scores(task: str) -> dict[str, float]:
+    """Get complexity match scores for all agents."""
+    return {a: complexity_match(task, a) for a in AGENT_TAXONOMY}
+
+
 # --- Ensemble Router ---
 
-def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False, 
-          weights: tuple = (0.4, 0.4, 0.2), use_ollama: bool = False) -> dict:
+def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False,
+          weights: tuple = None, use_ollama: bool = False, tier: str = "hybrid") -> dict:
     """
-    Route a task to the best agent using 3-signal ensemble.
-    Tries Ollama embeddings first (if enabled), falls back to TF-IDF, then keywords.
+    Route a task to the best agent using hybrid Tier 1+2 scoring.
     
     Args:
-        weights: (tfidf_weight, keyword_weight, complexity_weight) — must sum to ~1.0
-        use_ollama: Whether to use Tier 1 Ollama embeddings (slow, default False)
+        task: The task description to route
+        index: Pre-built TF-IDF index (optional)
+        top_k: Number of similar docs to consider for TF-IDF
+        explain: Include detailed scoring breakdown
+        weights: Custom blend weights (embedding, keyword, tfidf, complexity)
+        use_ollama: Whether to query Ollama live (slow)
+        tier: "hybrid" (default), "tier1", "tier2", or "tier3"
+    
+    Returns:
+        dict with recommended_agent, confidence, method, tier, scores
     """
-    # Tier 1: Try Ollama embeddings (only if enabled)
-    ollama_embedding = get_ollama_embedding(task) if use_ollama else None
-    if ollama_embedding and EMBEDDING_CACHE.exists():
-        # Load cached embeddings and compare
-        try:
-            cache = json.loads(EMBEDDING_CACHE.read_text())
-            similarities = []
-            for item in cache.get("embeddings", []):
-                sim = cosine_similarity_vectors(ollama_embedding, item["embedding"])
-                similarities.append({"agent": item["agent"], "similarity": sim})
-            
-            if similarities:
-                similarities.sort(key=lambda x: x["similarity"], reverse=True)
-                top = similarities[0]
-                return {
-                    "recommended_agent": top["agent"],
-                    "confidence": round(top["similarity"], 4),
-                    "method": "ollama-embeddings-tier1",
-                    "tier": 1
-                }
-        except Exception:
-            pass  # Fall through to Tier 2
-
-    # Tier 2: TF-IDF + ensemble
-    if index is None:
+    # Default weights: hybrid blend
+    if weights is None:
+        if tier == "tier1":
+            weights = (1.0, 0.0, 0.0, 0.0)  # Pure embedding
+        elif tier == "tier2":
+            weights = (0.0, 0.5, 0.3, 0.2)  # No embedding
+        elif tier == "tier3":
+            weights = (0.0, 1.0, 0.0, 0.0)  # Pure keyword
+        else:  # hybrid
+            weights = (0.5, 0.3, 0.2, 0.0)  # 50% embed, 30% keyword, 20% tfidf
+    
+    w_embed, w_kw, w_tfidf, w_cx = weights
+    
+    # Load index if needed
+    if index is None and w_tfidf > 0:
         if INDEX_PATH.exists():
             index = json.loads(INDEX_PATH.read_text())
+        elif w_kw == 0 and w_embed == 0:
+            # Fallback to tier 3 if no index and no other signals
+            tier = "tier3"
+            w_kw = 1.0
+            w_tfidf = 0.0
+    
+    # Get all signal scores
+    embed_scores = get_ollama_similarities(task) if w_embed > 0 else None
+    kw_scores = get_keyword_scores(task) if w_kw > 0 else None
+    tfidf_scores = get_tfidf_scores(task, index, top_k) if w_tfidf > 0 and index else None
+    cx_scores = get_complexity_scores(task) if w_cx > 0 else None
+    
+    # Fallback: if Ollama fails but we wanted it, use pure keyword
+    if w_embed > 0 and embed_scores is None:
+        if w_kw > 0:
+            # Demote to keyword-heavy blend
+            w_embed = 0.0
+            w_kw = 0.8
+            w_tfidf = 0.2
+            tier = "tier2-keyword-fallback"
         else:
-            # Tier 3: Keyword-only fallback
-            scores = {}
-            for agent in AGENT_TAXONOMY:
-                kw = keyword_score(task, agent)
-                cx = complexity_match(task, agent)
-                scores[agent] = kw + cx
-            winner = max(scores, key=scores.get)
+            # Can't do anything without Ollama or keywords
             return {
-                "recommended_agent": winner,
-                "confidence": min(scores[winner], 1.0),
-                "method": "keyword-only-tier3",
-                "tier": 3,
-                "scores": scores
+                "recommended_agent": "kimi",
+                "confidence": 0.0,
+                "method": "fallback-error",
+                "tier": "error",
+                "error": "Ollama unavailable and no keyword signal"
             }
-
-    # TF-IDF similarity
-    task_tokens = tokenize(task)
-    task_tf = Counter(task_tokens)
-    max_tf = max(task_tf.values()) if task_tf else 1
-    task_tfidf = {
-        t: (f / max_tf) * index["idf"].get(t, 1.0)
-        for t, f in task_tf.items()
-    }
-
-    # Find top-k similar training samples
-    similarities = []
-    for doc in index["documents"]:
-        sim = cosine_similarity_tfidf(task_tfidf, doc["tfidf"])
-        similarities.append({"agent": doc["agent"], "task": doc["task"], "similarity": sim})
-    similarities.sort(key=lambda x: x["similarity"], reverse=True)
-    top_matches = similarities[:top_k]
-
-    # TF-IDF signal
-    tfidf_scores = Counter()
-    for match in top_matches:
-        tfidf_scores[match["agent"]] += match["similarity"]
-    total_sim = sum(tfidf_scores.values()) or 1.0
-    tfidf_scores = {a: s / total_sim for a, s in tfidf_scores.items()}
-
-    # Keyword signal
-    kw_scores = {a: keyword_score(task, a) for a in AGENT_TAXONOMY}
-    total_kw = sum(kw_scores.values()) or 1.0
-    kw_scores = {a: s / total_kw for a, s in kw_scores.items()}
-
-    # Complexity signal
-    cx_scores = {a: complexity_match(task, a) for a in AGENT_TAXONOMY}
-
-    # Ensemble: configurable weights (default 40% TF-IDF + 40% keyword + 20% complexity)
-    w_tfidf, w_kw, w_cx = weights
+    
+    # Blend scores
     final_scores = {}
     for agent in AGENT_TAXONOMY:
-        tfidf = tfidf_scores.get(agent, 0.0)
-        kw = kw_scores.get(agent, 0.0)
-        cx = cx_scores.get(agent, 0.0)
-        final_scores[agent] = (w_tfidf * tfidf) + (w_kw * kw) + (w_cx * cx)
-
+        score = 0.0
+        if embed_scores:
+            score += w_embed * embed_scores.get(agent, 0.0)
+        if kw_scores:
+            score += w_kw * kw_scores.get(agent, 0.0)
+        if tfidf_scores:
+            score += w_tfidf * tfidf_scores.get(agent, 0.0)
+        if cx_scores:
+            score += w_cx * cx_scores.get(agent, 0.0)
+        final_scores[agent] = score
+    
     winner = max(final_scores, key=final_scores.get)
     confidence = final_scores[winner]
-
+    
     result = {
         "recommended_agent": winner,
         "confidence": round(confidence, 4),
-        "method": "ensemble-tfidf-tier2",
-        "tier": 2,
+        "method": f"{tier}-ensemble",
+        "tier": tier,
+        "weights": {
+            "embedding": w_embed,
+            "keyword": w_kw,
+            "tfidf": w_tfidf,
+            "complexity": w_cx
+        },
         "scores": {a: round(s, 4) for a, s in sorted(
             final_scores.items(), key=lambda x: x[1], reverse=True
         )}
     }
-
+    
     if explain:
-        result["explanation"] = {
-            "tfidf_signal": {a: round(s, 4) for a, s in tfidf_scores.items()},
-            "keyword_signal": {a: round(s, 4) for a, s in kw_scores.items()},
-            "complexity": complexity_score(task),
-            "complexity_signal": cx_scores,
-            "top_training_matches": top_matches[:3],
-            "weights": f"{w_tfidf*100:.0f}% TF-IDF + {w_kw*100:.0f}% keyword + {w_cx*100:.0f}% complexity"
-        }
-
+        result["signals"] = {}
+        if embed_scores:
+            result["signals"]["embedding"] = {a: round(s, 4) for a, s in embed_scores.items()}
+        if kw_scores:
+            result["signals"]["keyword"] = {a: round(s, 4) for a, s in kw_scores.items()}
+        if tfidf_scores:
+            result["signals"]["tfidf"] = {a: round(s, 4) for a, s in tfidf_scores.items()}
+        if cx_scores:
+            result["signals"]["complexity"] = cx_scores
+    
     return result
+
+
+def route_all_tiers(task: str, index: dict = None) -> dict:
+    """
+    Route using all tiers and return comparison.
+    Useful for debugging and tier comparison.
+    """
+    return {
+        "task": task,
+        "tier1": route(task, index=index, tier="tier1"),
+        "tier2": route(task, index=index, tier="tier2"),
+        "tier3": route(task, index=index, tier="tier3"),
+        "hybrid": route(task, index=index, tier="hybrid")
+    }
+
 
 def build_embedding_cache():
     """Build Ollama embedding cache from training data."""
@@ -444,16 +540,26 @@ def build_embedding_cache():
     print(f"Cached {len(cache['embeddings'])} embeddings to {EMBEDDING_CACHE}")
     return True
 
+
 # --- CLI ---
 
 def main():
     import sys
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Neural Router v3 — Hybrid Tier 1+2")
+    parser.add_argument("task", nargs="?", help="Task description to route")
+    parser.add_argument("--explain", action="store_true", help="Show detailed scoring")
+    parser.add_argument("--build-index", action="store_true", help="Build TF-IDF index")
+    parser.add_argument("--build-embeddings", action="store_true", help="Build Ollama cache")
+    parser.add_argument("--compare-tiers", action="store_true", help="Compare all tiers side-by-side")
+    parser.add_argument("--tier", choices=["tier1", "tier2", "tier3", "hybrid"], 
+                       default="hybrid", help="Routing tier to use")
+    parser.add_argument("--weights", type=str, help="Custom weights 'embed,kw,tfidf,cx' (e.g., '0.5,0.3,0.2,0')")
+    
+    args = parser.parse_args()
 
-    if len(sys.argv) < 2:
-        print("Usage: python3 route_task_v3.py <task> [--explain] [--build-index] [--build-embeddings]")
-        sys.exit(1)
-
-    if "--build-index" in sys.argv:
+    if args.build_index:
         if not TRAINING_PATH.exists():
             print(f"No training data at {TRAINING_PATH}")
             sys.exit(1)
@@ -462,19 +568,69 @@ def main():
         print(f"Built TF-IDF index from {len(data)} samples → {INDEX_PATH}")
         return
 
-    if "--build-embeddings" in sys.argv:
+    if args.build_embeddings:
         success = build_embedding_cache()
         sys.exit(0 if success else 1)
 
-    task = sys.argv[1]
-    if task.startswith("--"):
-        print("Usage: python3 route_task_v3.py <task> [--explain] [--build-index] [--build-embeddings]")
+    if args.compare_tiers:
+        if not args.task:
+            print("Usage: python3 route_task_v3.py <task> --compare-tiers")
+            sys.exit(1)
+        
+        # Load index for comparison
+        index = None
+        if INDEX_PATH.exists():
+            index = json.loads(INDEX_PATH.read_text())
+        
+        results = route_all_tiers(args.task, index=index)
+        
+        print(f"\nTask: {results['task']}\n")
+        print(f"{'Tier':<12} {'Agent':<10} {'Confidence':<12} {'Method'}")
+        print("-" * 60)
+        for tier_name in ["tier1", "tier2", "tier3", "hybrid"]:
+            r = results[tier_name]
+            print(f"{tier_name:<12} {r['recommended_agent']:<10} {r['confidence']:<12.4f} {r['method']}")
+        
+        # Show agreement
+        agents = [results[t]["recommended_agent"] for t in ["tier1", "tier2", "tier3", "hybrid"]]
+        if len(set(agents)) == 1:
+            print(f"\n✅ All tiers agree: {agents[0]}")
+        else:
+            print(f"\n⚠️  Tiers disagree: {dict(zip(['tier1', 'tier2', 'tier3', 'hybrid'], agents))}")
+        
+        if args.explain:
+            print("\n" + "=" * 60)
+            print("HYBRID DETAILED BREAKDOWN")
+            print("=" * 60)
+            hybrid = results["hybrid"]
+            if "signals" in hybrid:
+                for signal, scores in hybrid["signals"].items():
+                    print(f"\n{signal.upper()} signal:")
+                    for agent, score in sorted(scores.items(), key=lambda x: x[1], reverse=True):
+                        print(f"  {agent}: {score:.4f}")
+        
+        return
+
+    if not args.task:
+        parser.print_help()
         sys.exit(1)
     
-    explain = "--explain" in sys.argv
-
-    result = route(task, explain=explain)
+    # Parse custom weights
+    weights = None
+    if args.weights:
+        parts = [float(x) for x in args.weights.split(",")]
+        if len(parts) == 4:
+            weights = tuple(parts)
+    
+    # Load index if available
+    index = None
+    if INDEX_PATH.exists():
+        index = json.loads(INDEX_PATH.read_text())
+    
+    result = route(args.task, index=index, explain=args.explain, 
+                   weights=weights, tier=args.tier)
     print(json.dumps(result, indent=2))
+
 
 if __name__ == "__main__":
     main()

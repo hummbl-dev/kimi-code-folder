@@ -99,6 +99,61 @@ def eval_v3_with_weights(train_data: list[dict], test_data: list[dict], weights:
     }
 
 
+def eval_all_tiers(train_data: list[dict], test_data: list[dict]) -> dict:
+    """Evaluate all tiers (tier1, tier2, tier3, hybrid) and return comparison."""
+    from route_task_v3 import build_tfidf_index, route
+    
+    index = build_tfidf_index(train_data)
+    
+    results = {
+        "tier1": {"correct": 0, "confusion": {}},
+        "tier2": {"correct": 0, "confusion": {}},
+        "tier3": {"correct": 0, "confusion": {}},
+        "hybrid": {"correct": 0, "confusion": {}}
+    }
+    
+    # For faster eval, limit Tier 1 to first 10 samples (Ollama is slow)
+    tier1_test = test_data[:10]
+    
+    for item in test_data:
+        actual = item["agent"].lower()
+        
+        # Tier 2, 3, Hybrid (fast - no Ollama live calls)
+        for tier in ["tier2", "tier3", "hybrid"]:
+            prediction = route(item["task"], index=index, tier=tier)
+            pred_agent = prediction.get("recommended_agent", "").lower()
+            
+            if pred_agent == actual:
+                results[tier]["correct"] += 1
+            
+            key = (actual, pred_agent)
+            results[tier]["confusion"][key] = results[tier]["confusion"].get(key, 0) + 1
+    
+    # Tier 1 (slow - Ollama embeddings) - sample only
+    for item in tier1_test:
+        actual = item["agent"].lower()
+        prediction = route(item["task"], index=index, tier="tier1")
+        pred_agent = prediction.get("recommended_agent", "").lower()
+        
+        if pred_agent == actual:
+            results["tier1"]["correct"] += 1
+        
+        key = (actual, pred_agent)
+        results["tier1"]["confusion"][key] = results["tier1"]["confusion"].get(key, 0) + 1
+    
+    # Calculate accuracies
+    for tier in ["tier2", "tier3", "hybrid"]:
+        results[tier]["accuracy"] = results[tier]["correct"] / len(test_data)
+        results[tier]["total"] = len(test_data)
+    
+    # Tier 1 on subset
+    results["tier1"]["accuracy"] = results["tier1"]["correct"] / len(tier1_test)
+    results["tier1"]["total"] = len(tier1_test)
+    results["tier1"]["note"] = "Sampled on 10/30 test items (Ollama speed)"
+    
+    return results
+
+
 def tune_weights(data: list[dict], step: float = 0.1) -> dict:
     """
     Grid search optimal weights for (tfidf, keyword, complexity).
@@ -135,6 +190,7 @@ def main():
     parser = argparse.ArgumentParser(description="Router evaluation harness")
     parser.add_argument("--tune", action="store_true", help="Run weight tuning grid search")
     parser.add_argument("--weights", type=str, help="Custom weights as 'tfidf,keyword,complexity' (e.g., '0.3,0.5,0.2')")
+    parser.add_argument("--compare-tiers", action="store_true", help="Compare all tiers (Tier 1, 2, 3, Hybrid)")
     args = parser.parse_args()
 
     data = load_data()
@@ -162,6 +218,52 @@ def main():
     train_data, test_data = split_data(data)
     print(f"Split: {len(train_data)} train / {len(test_data)} test\n")
 
+    if args.compare_tiers:
+        print("=" * 60)
+        print("TIER COMPARISON EVALUATION")
+        print("=" * 60)
+        print("Comparing Tier 1, Tier 2, Tier 3, and Hybrid approaches\n")
+        
+        results = eval_all_tiers(train_data, test_data)
+        
+        print("ACCURACY RESULTS")
+        print("-" * 60)
+        print(f"{'Tier':<15} {'Accuracy':<12} {'Correct':<10} {'Total'}")
+        print("-" * 60)
+        for tier in ["tier1", "tier2", "tier3", "hybrid"]:
+            r = results[tier]
+            note = f" ({r.get('note', '')})" if tier == "tier1" else ""
+            print(f"{tier:<15} {r['accuracy']*100:>6.1f}%      {r['correct']:>3}/{r['total']:<6}{note}")
+        
+        print("\n" + "=" * 60)
+        print("CONFUSION MATRICES")
+        print("=" * 60)
+        
+        agents = ["claude", "codex", "copilot", "kimi", "ollama"]
+        for tier in ["tier3", "hybrid"]:  # Show most relevant
+            print(f"\n{tier.upper()} Confusion Matrix (rows=expected, cols=predicted):")
+            header = f"{'':>10}" + "".join(f"{a:>10}" for a in agents)
+            print(header)
+            for a in agents:
+                row = f"{a:>10}"
+                for b in agents:
+                    count = results[tier]["confusion"].get((a, b), 0)
+                    row += f"{count:>10}"
+                print(row)
+        
+        # Target check
+        hybrid_acc = results["hybrid"]["accuracy"] * 100
+        print("\n" + "=" * 60)
+        if hybrid_acc >= 85:
+            print(f"✅ TARGET ACHIEVED: Hybrid accuracy {hybrid_acc:.1f}% >= 85%")
+        elif hybrid_acc >= 80:
+            print(f"⚠️  CLOSE: Hybrid accuracy {hybrid_acc:.1f}% (target: 85%)")
+        else:
+            print(f"❌ BELOW TARGET: Hybrid accuracy {hybrid_acc:.1f}% (target: 85%)")
+        print("=" * 60)
+        
+        return
+
     # Use custom weights if provided
     weights = None
     if args.weights:
@@ -182,7 +284,6 @@ def main():
     print(f"Accuracy: {v3_results['accuracy']*100:.1f}% ({v3_results['correct']}/{v3_results['total']})")
 
     # Confusion matrix
-    # Re-run to get full results for matrix
     from route_task_v3 import build_tfidf_index, route
     index = build_tfidf_index(train_data)
     results = []

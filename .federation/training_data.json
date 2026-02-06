@@ -398,5 +398,205 @@
   {
     "task": "Extract user validation into helper function",
     "agent": "copilot"
+  },
+  {
+    "task": "Research OAuth2 security best practices",
+    "agent": "claude"
+  },
+  {
+    "task": "Research then implement OAuth2 flow",
+    "agent": "kimi"
+  },
+  {
+    "task": "Deep research on GraphQL vs REST tradeoffs",
+    "agent": "claude"
+  },
+  {
+    "task": "Research caching strategies then build the layer",
+    "agent": "kimi"
+  },
+  {
+    "task": "Analyze microservices decomposition patterns",
+    "agent": "claude"
+  },
+  {
+    "task": "Study then implement event-driven architecture",
+    "agent": "kimi"
+  },
+  {
+    "task": "Investigate database sharding approaches",
+    "agent": "claude"
+  },
+  {
+    "task": "Research testing patterns then add test suite",
+    "agent": "kimi"
+  },
+  {
+    "task": "Evaluate serverless vs container tradeoffs",
+    "agent": "claude"
+  },
+  {
+    "task": "Compare messaging queues then implement one",
+    "agent": "kimi"
+  },
+  {
+    "task": "Document authentication security requirements",
+    "agent": "claude"
+  },
+  {
+    "task": "Write spec then build the auth service",
+    "agent": "kimi"
+  },
+  {
+    "task": "Assess scalability bottlenecks in current design",
+    "agent": "claude"
+  },
+  {
+    "task": "Analyze then fix performance issues",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create architecture decision record for database choice",
+    "agent": "claude"
+  },
+  {
+    "task": "Review RFC then implement the API changes",
+    "agent": "kimi"
+  },
+  {
+    "task": "Survey frontend framework options",
+    "agent": "claude"
+  },
+  {
+    "task": "Evaluate then migrate to new framework",
+    "agent": "kimi"
+  },
+  {
+    "task": "Document compliance requirements analysis",
+    "agent": "claude"
+  },
+  {
+    "task": "Research GDPR then implement compliance features",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build user authentication module",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement auth across web iOS and Android",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create payment processing service",
+    "agent": "codex"
+  },
+  {
+    "task": "Integrate payments with fraud detection",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build notification dispatch service",
+    "agent": "codex"
+  },
+  {
+    "task": "Connect notifications to email SMS push",
+    "agent": "kimi"
+  },
+  {
+    "task": "Implement search indexing service",
+    "agent": "codex"
+  },
+  {
+    "task": "Deploy search across all regions",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build caching middleware",
+    "agent": "codex"
+  },
+  {
+    "task": "Configure cache invalidation across services",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create file upload handler",
+    "agent": "codex"
+  },
+  {
+    "task": "Handle uploads with virus scanning and CDN",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build webhook processing service",
+    "agent": "codex"
+  },
+  {
+    "task": "Process webhooks with retry logic across queues",
+    "agent": "kimi"
+  },
+  {
+    "task": "Implement analytics aggregation service",
+    "agent": "codex"
+  },
+  {
+    "task": "Stream analytics to warehouse and real-time dashboards",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build rate limiting service",
+    "agent": "codex"
+  },
+  {
+    "task": "Apply rate limits per user tier and endpoint",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create audit logging service",
+    "agent": "codex"
+  },
+  {
+    "task": "Log audits to immutable store with alerting",
+    "agent": "kimi"
+  },
+  {
+    "task": "Draft API specification document",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch database schema for new feature",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm user flow variations",
+    "agent": "ollama"
+  },
+  {
+    "task": "Prototype React component locally",
+    "agent": "ollama"
+  },
+  {
+    "task": "Mock API responses for frontend testing",
+    "agent": "ollama"
+  },
+  {
+    "task": "Template for Express route handlers",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate ideas for error messages",
+    "agent": "ollama"
+  },
+  {
+    "task": "Rough draft of deployment checklist",
+    "agent": "ollama"
+  },
+  {
+    "task": "Experiment with CSS grid layout",
+    "agent": "ollama"
+  },
+  {
+    "task": "Stub out test cases for new module",
+    "agent": "ollama"
   }
 ]
