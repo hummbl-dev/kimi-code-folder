@@ -30,12 +30,42 @@ Kimi Code CLI is an autonomous AI coding assistant that operates in your termina
 |----------|---------|
 | **[README.md](./README.md)** | This file — your entry point |
 | **[AGENT_FIRST_MANIFESTO.md](./AGENT_FIRST_MANIFESTO.md)** | **Core philosophy** — Agent First principles, agency covenant, case studies |
+| **[AGENTS.md](./AGENTS.md)** | **Federation guide** — Multi-agent coordination, routing, handoffs |
 | **[ARCHITECTURE.md](./ARCHITECTURE.md)** | How Kimi Code works internally — tools, subagents, skills system |
 | **[USER-GUIDE.md](./USER-GUIDE.md)** | How to frame requests and get the best results |
 | **[TOOLS.md](./TOOLS.md)** | Complete reference for all built-in tools |
 | **[SKILLS.md](./SKILLS.md)** | Catalog of 33+ specialized skills and when to use them |
 | **[BEST-PRACTICES.md](./BEST-PRACTICES.md)** | Patterns for effective collaboration |
 | **[EXAMPLES.md](./EXAMPLES.md)** | Good vs. bad request patterns with explanations |
+| **[FEDERATION_LOG.md](./FEDERATION_LOG.md)** | Cross-agent work tracking and handoff history |
+
+---
+
+## 🤖 Agent Federation
+
+This workspace is part of a **multi-agent federation** — coordinated AI agents working together:
+
+| Agent | Role | Best For |
+|-------|------|----------|
+| **Copilot** 💭 | Thinking & Review | Quick questions, IDE work, planning |
+| **Kimi** 🔧 | Execution | Implementation, multi-file changes, deployment |
+| **Claude** 📚 | Research & Docs | Architecture, analysis, documentation |
+| **Ollama** 🏠 | Local Drafting | Fast iteration, prototyping, offline work |
+
+### Quick Federation Commands
+
+```bash
+# Route a task to best agent
+python3 scripts/route_task_v2.py "Research authentication patterns"
+
+# Check task queue
+python3 scripts/fed-queue.py list
+
+# View federation dashboard
+python3 scripts/fed-analytics.py dashboard
+```
+
+📖 **[Full federation guide → AGENTS.md](./AGENTS.md)**
 
 ---
 

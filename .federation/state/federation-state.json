@@ -32,11 +32,11 @@
     }
   },
   "queue": {
-    "pending_count": 4,
+    "pending_count": 5,
     "in_progress_count": 0,
-    "completed_count": 2,
-    "auto_scheduling": false,
-    "last_updated": "2026-02-05T19:12:10.355286"
+    "completed_count": 5,
+    "auto_scheduling": true,
+    "last_updated": "2026-02-06T10:48:43.481418"
   },
   "metrics": {
     "total_tasks": 0,

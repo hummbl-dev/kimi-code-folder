@@ -1,0 +1,43 @@
+{
+  "vote_id": "vote-20260206-111059-0001",
+  "question": "Phase 5 Priority: Should we prioritize Advanced ML routing or Cross-Federation networking?",
+  "context_path": "docs/planning/phase5-rfc.md",
+  "created_at": "2026-02-06T11:10:59.131682",
+  "deadline": "2026-02-08T11:10:59.131650",
+  "status": "resolved",
+  "votes": {
+    "kimi": {
+      "choice": "advanced-ml",
+      "confidence": 0.85,
+      "reasoning": "Better routing improves every task. Cross-federation adds complexity we may not need yet.",
+      "timestamp": "2026-02-06T11:11:37.460891"
+    },
+    "claude": {
+      "choice": "cross-federation",
+      "confidence": 0.75,
+      "reasoning": "Cross-federation enables true scale. ML improvements are incremental; cross-federation is transformational.",
+      "timestamp": "2026-02-06T11:11:37.721129"
+    },
+    "copilot": {
+      "choice": "advanced-ml",
+      "confidence": 0.7,
+      "reasoning": "Better to perfect single-workspace experience before scaling.",
+      "timestamp": "2026-02-06T11:11:37.954824"
+    }
+  },
+  "result": {
+    "outcome": "decided",
+    "winner": "advanced-ml",
+    "weighted_score": 1.55,
+    "total_weight": 2.3,
+    "confidence_percentage": 67.4,
+    "method": "weighted_confidence"
+  },
+  "escalation_reason": null,
+  "metadata": {
+    "min_voters": 2,
+    "confidence_threshold": 0.7,
+    "created_by": "reuben"
+  },
+  "resolved_at": "2026-02-06T11:11:38.414253"
+}

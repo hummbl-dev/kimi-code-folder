@@ -1,0 +1,277 @@
+{
+  "version": "1.0",
+  "initialized": "2026-02-05T21:27:47.253387",
+  "last_updated": "2026-02-05T21:28:13.117175",
+  "agents": {
+    "kimi": {
+      "total_tasks": 9,
+      "successful_tasks": 8,
+      "failed_tasks": 1,
+      "total_duration_min": 197,
+      "avg_duration_min": 21.88888888888889,
+      "rework_count": 0,
+      "success_rate": 0.8888888888888888,
+      "task_types": {
+        "implementation": {
+          "count": 6,
+          "successes": 6,
+          "failures": 0,
+          "total_duration": 125,
+          "success_rate": 1.0
+        },
+        "deployment": {
+          "count": 2,
+          "successes": 2,
+          "failures": 0,
+          "total_duration": 27,
+          "success_rate": 1.0
+        },
+        "research": {
+          "count": 1,
+          "successes": 0,
+          "failures": 1,
+          "total_duration": 45,
+          "success_rate": 0.0
+        }
+      }
+    },
+    "claude": {
+      "total_tasks": 6,
+      "successful_tasks": 5,
+      "failed_tasks": 1,
+      "total_duration_min": 256,
+      "avg_duration_min": 42.666666666666664,
+      "rework_count": 1,
+      "success_rate": 0.8333333333333334,
+      "task_types": {
+        "research": {
+          "count": 5,
+          "successes": 5,
+          "failures": 0,
+          "total_duration": 196,
+          "success_rate": 1.0
+        },
+        "implementation": {
+          "count": 1,
+          "successes": 0,
+          "failures": 1,
+          "total_duration": 60,
+          "success_rate": 0.0
+        }
+      }
+    },
+    "copilot": {
+      "total_tasks": 3,
+      "successful_tasks": 3,
+      "failed_tasks": 0,
+      "total_duration_min": 33,
+      "avg_duration_min": 11.0,
+      "rework_count": 0,
+      "success_rate": 1.0,
+      "task_types": {
+        "review": {
+          "count": 2,
+          "successes": 2,
+          "failures": 0,
+          "total_duration": 18,
+          "success_rate": 1.0
+        },
+        "planning": {
+          "count": 1,
+          "successes": 1,
+          "failures": 0,
+          "total_duration": 15,
+          "success_rate": 1.0
+        }
+      }
+    }
+  },
+  "task_types": {
+    "implementation": {
+      "total_count": 7,
+      "agent_breakdown": {}
+    },
+    "deployment": {
+      "total_count": 2,
+      "agent_breakdown": {}
+    },
+    "research": {
+      "total_count": 6,
+      "agent_breakdown": {}
+    },
+    "review": {
+      "total_count": 2,
+      "agent_breakdown": {}
+    },
+    "planning": {
+      "total_count": 1,
+      "agent_breakdown": {}
+    }
+  },
+  "routing_performance": {},
+  "optimization_history": [],
+  "recent_tasks": [
+    {
+      "timestamp": "2026-02-05T21:28:13.117104",
+      "agent": "claude",
+      "task_type": "research",
+      "success": true,
+      "duration_min": 41,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:28:12.985307",
+      "agent": "claude",
+      "task_type": "research",
+      "success": true,
+      "duration_min": 38,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:28:12.852180",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 21,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:28:12.717448",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 19,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:28:12.562419",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 22,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.846915",
+      "agent": "copilot",
+      "task_type": "planning",
+      "success": true,
+      "duration_min": 15,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.716405",
+      "agent": "copilot",
+      "task_type": "review",
+      "success": true,
+      "duration_min": 8,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.586292",
+      "agent": "copilot",
+      "task_type": "review",
+      "success": true,
+      "duration_min": 10,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.461524",
+      "agent": "claude",
+      "task_type": "implementation",
+      "success": false,
+      "duration_min": 60,
+      "rework_required": true,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.334645",
+      "agent": "claude",
+      "task_type": "research",
+      "success": true,
+      "duration_min": 42,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.203563",
+      "agent": "claude",
+      "task_type": "research",
+      "success": true,
+      "duration_min": 35,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:48.076214",
+      "agent": "claude",
+      "task_type": "research",
+      "success": true,
+      "duration_min": 40,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.951981",
+      "agent": "kimi",
+      "task_type": "research",
+      "success": false,
+      "duration_min": 45,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.804401",
+      "agent": "kimi",
+      "task_type": "deployment",
+      "success": true,
+      "duration_min": 12,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.655263",
+      "agent": "kimi",
+      "task_type": "deployment",
+      "success": true,
+      "duration_min": 15,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.518479",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 25,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.385009",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 18,
+      "rework_required": false,
+      "notes": null
+    },
+    {
+      "timestamp": "2026-02-05T21:27:47.253858",
+      "agent": "kimi",
+      "task_type": "implementation",
+      "success": true,
+      "duration_min": 20,
+      "rework_required": false,
+      "notes": null
+    }
+  ]
+}
