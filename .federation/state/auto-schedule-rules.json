@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "enabled": true,
+  "rules": [
+    {
+      "id": "research-to-implementation",
+      "name": "Research \u2192 Implementation",
+      "trigger": {
+        "from_agent": "claude",
+        "task_patterns": [
+          "research",
+          "analyze",
+          "architecture",
+          "design"
+        ],
+        "output_artifact": true
+      },
+      "action": {
+        "queue_for": "kimi",
+        "task_template": "Implement {previous_task} from {artifact_path}",
+        "priority": "high",
+        "auto_start": false
+      },
+      "enabled": true
+    },
+    {
+      "id": "implementation-to-testing",
+      "name": "Implementation \u2192 Testing",
+      "trigger": {
+        "from_agent": "kimi",
+        "task_patterns": [
+          "implement",
+          "build",
+          "create",
+          "refactor"
+        ],
+        "output_artifact": true
+      },
+      "action": {
+        "queue_for": "copilot",
+        "task_template": "Review and test {previous_task}",
+        "priority": "normal",
+        "auto_start": false
+      },
+      "enabled": true
+    },
+    {
+      "id": "design-to-execution",
+      "name": "Design \u2192 Execution",
+      "trigger": {
+        "from_agent": "copilot",
+        "task_patterns": [
+          "design",
+          "plan",
+          "structure"
+        ],
+        "output_artifact": true
+      },
+      "action": {
+        "queue_for": "claude",
+        "task_template": "Research and document approach for {previous_task}",
+        "priority": "normal",
+        "auto_start": false
+      },
+      "enabled": true
+    },
+    {
+      "id": "draft-to-polish",
+      "name": "Draft \u2192 Polish",
+      "trigger": {
+        "from_agent": "ollama",
+        "task_patterns": [
+          "draft",
+          "sketch",
+          "prototype"
+        ],
+        "output_artifact": true
+      },
+      "action": {
+        "queue_for": "kimi",
+        "task_template": "Polish and productionize {previous_task}",
+        "priority": "low",
+        "auto_start": false
+      },
+      "enabled": false
+    }
+  ],
+  "global_settings": {
+    "require_confirmation": true,
+    "log_to_federation": true,
+    "max_auto_queue_depth": 5,
+    "notification_on_queue": true
+  }
+}

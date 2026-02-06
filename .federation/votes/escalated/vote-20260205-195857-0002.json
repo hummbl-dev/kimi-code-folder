@@ -1,0 +1,45 @@
+{
+  "vote_id": "vote-20260205-195857-0002",
+  "question": "Should we add analytics dashboard before optimization engine?",
+  "context_path": "docs/planning/phase4-status.md",
+  "created_at": "2026-02-05T19:58:57.746565",
+  "deadline": "2026-02-06T19:58:57.746548",
+  "status": "escalated",
+  "votes": {
+    "claude": {
+      "choice": "dashboard-first",
+      "confidence": 0.85,
+      "reasoning": "Need visibility before optimization",
+      "timestamp": "2026-02-05T19:59:06.175382"
+    },
+    "kimi": {
+      "choice": "optimization-first",
+      "confidence": 0.6,
+      "reasoning": "Optimization drives more value",
+      "timestamp": "2026-02-05T19:59:06.312826"
+    },
+    "copilot": {
+      "choice": "dashboard-first",
+      "confidence": 0.75,
+      "reasoning": "Agree with Claude, metrics inform decisions",
+      "timestamp": "2026-02-05T19:59:06.446784"
+    }
+  },
+  "result": {
+    "outcome": "escalate",
+    "reason": "Low confidence vote(s) detected",
+    "winner": "dashboard-first",
+    "weighted_score": 1.6,
+    "weighted_scores": {
+      "dashboard-first": 1.6,
+      "optimization-first": 0.6
+    }
+  },
+  "escalation_reason": null,
+  "metadata": {
+    "min_voters": 2,
+    "confidence_threshold": 0.7,
+    "created_by": "reuben"
+  },
+  "resolved_at": "2026-02-05T19:59:06.583059"
+}

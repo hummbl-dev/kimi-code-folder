@@ -1,0 +1,365 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Federation Analytics Metrics Schema",
+  "description": "Schema for tracking federation performance metrics: handoffs, cost, latency, and agent utilization",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["metadata", "summary", "agents", "handoffs", "costs", "latency"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["version", "generated_at", "period_start", "period_end"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Schema version"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this metrics report was generated"
+        },
+        "period_start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of reporting period"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of reporting period"
+        },
+        "data_source": {
+          "type": "string",
+          "description": "Source of metrics data",
+          "default": "FEDERATION_LOG.md"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total_handoffs", "total_tasks", "total_cost_usd", "avg_latency_minutes"],
+      "properties": {
+        "total_handoffs": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of handoffs in period"
+        },
+        "total_tasks": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of tasks created"
+        },
+        "completed_tasks": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of tasks completed"
+        },
+        "pending_tasks": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of tasks still pending"
+        },
+        "total_cost_usd": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total estimated cost in USD"
+        },
+        "avg_latency_minutes": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average task completion time in minutes"
+        },
+        "success_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Percentage of tasks completed successfully"
+        }
+      }
+    },
+    "agents": {
+      "type": "object",
+      "description": "Per-agent utilization metrics",
+      "patternProperties": {
+        "^(claude|kimi|copilot|ollama)$": {
+          "type": "object",
+          "required": ["name", "status"],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "emoji": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": ["active", "standby", "inactive"]
+            },
+            "tasks_assigned": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "tasks_completed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "handoffs_given": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of tasks handed off TO other agents"
+            },
+            "handoffs_received": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Number of tasks received FROM other agents"
+            },
+            "utilization_percent": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100,
+              "description": "Percentage of time agent was working on tasks"
+            },
+            "avg_task_duration_minutes": {
+              "type": "number",
+              "minimum": 0
+            },
+            "cost_per_task_usd": {
+              "type": "number",
+              "minimum": 0
+            },
+            "total_cost_usd": {
+              "type": "number",
+              "minimum": 0
+            },
+            "success_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "specialty": {
+              "type": "string",
+              "description": "Agent's primary role"
+            }
+          }
+        }
+      }
+    },
+    "handoffs": {
+      "type": "object",
+      "description": "Handoff relationship metrics",
+      "properties": {
+        "by_pair": {
+          "type": "object",
+          "description": "Handoffs between specific agent pairs",
+          "patternProperties": {
+            "^(claude|kimi|copilot|ollama)-(claude|kimi|copilot|ollama)$": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "type": "string"
+                },
+                "to": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "avg_latency_minutes": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "success_rate": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        },
+        "by_phase": {
+          "type": "object",
+          "description": "Handoffs by workflow phase",
+          "properties": {
+            "research_to_implementation": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "implementation_to_testing": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "design_to_execution": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "auto_scheduled": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of auto-scheduled handoffs"
+        },
+        "manual": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of manual handoffs"
+        }
+      }
+    },
+    "costs": {
+      "type": "object",
+      "description": "Cost breakdown by category",
+      "properties": {
+        "by_agent": {
+          "type": "object",
+          "patternProperties": {
+            "^(claude|kimi|copilot|ollama)$": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "by_task_type": {
+          "type": "object",
+          "properties": {
+            "research": {
+              "type": "number",
+              "minimum": 0
+            },
+            "implementation": {
+              "type": "number",
+              "minimum": 0
+            },
+            "documentation": {
+              "type": "number",
+              "minimum": 0
+            },
+            "testing": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "efficiency": {
+          "type": "object",
+          "properties": {
+            "cost_per_handoff": {
+              "type": "number",
+              "minimum": 0
+            },
+            "cost_per_task": {
+              "type": "number",
+              "minimum": 0
+            },
+            "savings_from_optimization": {
+              "type": "number",
+              "description": "Estimated savings from routing optimization"
+            }
+          }
+        }
+      }
+    },
+    "latency": {
+      "type": "object",
+      "description": "Timing and latency metrics",
+      "properties": {
+        "task_lifecycle": {
+          "type": "object",
+          "properties": {
+            "avg_pending_time_minutes": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Time from creation to start"
+            },
+            "avg_execution_time_minutes": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Time from start to completion"
+            },
+            "avg_total_time_minutes": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Total time from creation to completion"
+            }
+          }
+        },
+        "handoff_latency": {
+          "type": "object",
+          "description": "Time between handoffs",
+          "properties": {
+            "avg_minutes": {
+              "type": "number",
+              "minimum": 0
+            },
+            "min_minutes": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max_minutes": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "queue_wait": {
+          "type": "object",
+          "description": "Time spent waiting in queue",
+          "properties": {
+            "avg_minutes": {
+              "type": "number",
+              "minimum": 0
+            },
+            "by_priority": {
+              "type": "object",
+              "properties": {
+                "critical": {
+                  "type": "number"
+                },
+                "high": {
+                  "type": "number"
+                },
+                "normal": {
+                  "type": "number"
+                },
+                "low": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "trends": {
+      "type": "object",
+      "description": "Time-based trends (if historical data available)",
+      "properties": {
+        "handoffs_by_day": {
+          "type": "object",
+          "patternProperties": {
+            "^\d{4}-\d{2}-\d{2}$": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "cost_by_day": {
+          "type": "object",
+          "patternProperties": {
+            "^\d{4}-\d{2}-\d{2}$": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "improvement_rate": {
+          "type": "number",
+          "description": "Percentage improvement over previous period"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "task_id": "task-20260205-191141-0005",
+  "status": "pending",
+  "created_at": "2026-02-05T19:11:41.516066",
+  "from_agent": "claude",
+  "to_agent": "kimi",
+  "description": "Implement Research authentication architecture patterns from docs/architecture/auth-patterns.md",
+  "priority": "high",
+  "dependencies": [
+    "task-20260205-191128-0004"
+  ],
+  "started_at": null,
+  "completed_at": null,
+  "result": null,
+  "context": {}
+}

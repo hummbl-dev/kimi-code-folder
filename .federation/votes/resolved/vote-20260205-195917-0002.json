@@ -1,0 +1,43 @@
+{
+  "vote_id": "vote-20260205-195917-0002",
+  "question": "Should we use Python or TypeScript for fed-analytics.py?",
+  "context_path": "docs/planning/phase4-autonomous-federation.md",
+  "created_at": "2026-02-05T19:59:17.513253",
+  "deadline": "2026-02-06T19:59:17.513237",
+  "status": "resolved",
+  "votes": {
+    "claude": {
+      "choice": "typescript",
+      "confidence": 0.8,
+      "reasoning": "Better type safety for analytics data structures",
+      "timestamp": "2026-02-05T19:59:26.389842"
+    },
+    "kimi": {
+      "choice": "python",
+      "confidence": 0.9,
+      "reasoning": "Consistency with existing federation scripts",
+      "timestamp": "2026-02-05T19:59:26.560863"
+    },
+    "copilot": {
+      "choice": "python",
+      "confidence": 0.7,
+      "reasoning": "Python ecosystem has better data science libraries",
+      "timestamp": "2026-02-05T19:59:26.759530"
+    }
+  },
+  "result": {
+    "outcome": "decided",
+    "winner": "python",
+    "weighted_score": 1.6,
+    "total_weight": 2.4,
+    "confidence_percentage": 66.7,
+    "method": "weighted_confidence"
+  },
+  "escalation_reason": null,
+  "metadata": {
+    "min_voters": 2,
+    "confidence_threshold": 0.7,
+    "created_by": "reuben"
+  },
+  "resolved_at": "2026-02-05T19:59:27.261555"
+}

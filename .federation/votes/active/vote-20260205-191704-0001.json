@@ -1,0 +1,41 @@
+{
+  "vote_id": "vote-20260205-191704-0001",
+  "question": "Should we implement the voting system with simple majority or weighted confidence?",
+  "context_path": "docs/planning/phase4-autonomous-federation.md",
+  "created_at": "2026-02-05T19:17:04.741149",
+  "deadline": "2026-02-07T19:17:04.741124",
+  "status": "escalated",
+  "votes": {
+    "claude": {
+      "choice": "weighted-confidence",
+      "confidence": 0.85,
+      "reasoning": "Weighted confidence better reflects agent certainty and prevents low-confidence swings from deciding outcomes",
+      "timestamp": "2026-02-05T19:17:21.884436"
+    },
+    "kimi": {
+      "choice": "simple-majority",
+      "confidence": 0.7,
+      "reasoning": "Simple majority is more transparent and easier to explain to humans",
+      "timestamp": "2026-02-05T19:17:22.111616"
+    }
+  },
+  "result": {
+    "outcome": "escalate",
+    "reason": "Tie between: weighted-confidence, simple-majority",
+    "tie": [
+      "weighted-confidence",
+      "simple-majority"
+    ],
+    "vote_counts": {
+      "weighted-confidence": 1,
+      "simple-majority": 1
+    }
+  },
+  "escalation_reason": null,
+  "metadata": {
+    "min_voters": 2,
+    "confidence_threshold": 0.7,
+    "created_by": "reuben"
+  },
+  "resolved_at": "2026-02-05T19:17:25.716980"
+}

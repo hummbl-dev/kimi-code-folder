@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "description": "Federation Health Indicators with Thresholds",
+  "updated": "2026-02-05T20:00:00Z",
+
+  "indicators": {
+    "routing_accuracy": {
+      "id": "FHI-001",
+      "name": "Routing Accuracy",
+      "description": "Percentage of tasks routed to correct agent without manual override",
+      "formula": "(auto_routed_correct / total_routed) * 100",
+      "unit": "percent",
+      "direction": "higher_is_better",
+      "thresholds": {
+        "healthy": { "min": 85, "label": "🟢 Healthy", "action": "none" },
+        "warning": { "min": 70, "max": 84.99, "label": "🟡 Warning", "action": "Review keyword taxonomy for gaps" },
+        "critical": { "max": 69.99, "label": "🔴 Critical", "action": "Pause auto-routing; audit recent misroutes" }
+      },
+      "current_value": null,
+      "trend": null,
+      "data_source": "routing_accuracy.keyword_based"
+    },
+
+    "handoff_efficiency": {
+      "id": "FHI-002",
+      "name": "Handoff Efficiency",
+      "description": "Percentage of handoffs completed without rework or escalation",
+      "formula": "((total_handoffs - rework_count - escalations) / total_handoffs) * 100",
+      "unit": "percent",
+      "direction": "higher_is_better",
+      "thresholds": {
+        "healthy": { "min": 90, "label": "🟢 Healthy", "action": "none" },
+        "warning": { "min": 75, "max": 89.99, "label": "🟡 Warning", "action": "Review context transfer quality" },
+        "critical": { "max": 74.99, "label": "🔴 Critical", "action": "Audit handoff protocol; add context requirements" }
+      },
+      "current_value": null,
+      "trend": null,
+      "data_source": "handoff_metrics"
+    },
+
+    "queue_throughput": {
+      "id": "FHI-003",
+      "name": "Queue Throughput",
+      "description": "Tasks completed per hour across all agents",
+      "formula": "completed_tasks / active_hours",
+      "unit": "tasks/hour",
+      "direction": "higher_is_better",
+      "thresholds": {
+        "healthy": { "min": 2.0, "label": "🟢 Healthy", "action": "none" },
+        "warning": { "min": 1.0, "max": 1.99, "label": "🟡 Warning", "action": "Check for blockers or agent availability" },
+        "critical": { "max": 0.99, "label": "🔴 Critical", "action": "Investigate bottleneck; add agent capacity" }
+      },
+      "current_value": null,
+      "trend": null,
+      "data_source": "queue_metrics"
+    },
+
+    "cost_efficiency": {
+      "id": "FHI-004",
+      "name": "Cost Efficiency",
+      "description": "Percentage of tasks using optimal-cost agent (free/low tier when appropriate)",
+      "formula": "(optimal_cost_routes / total_routes) * 100",
+      "unit": "percent",
+      "direction": "higher_is_better",
+      "thresholds": {
+        "healthy": { "min": 70, "label": "🟢 Healthy", "action": "none" },
+        "warning": { "min": 50, "max": 69.99, "label": "🟡 Warning", "action": "Review if expensive agents used for simple tasks" },
+        "critical": { "max": 49.99, "label": "🔴 Critical", "action": "Add cost_sensitive flag; retrain routing" }
+      },
+      "current_value": null,
+      "trend": null,
+      "data_source": "cost_tracking",
+      "notes": "Optimal = Ollama/Copilot for drafts/reviews, Claude only for research"
+    },
+
+    "agent_balance": {
+      "id": "FHI-005",
+      "name": "Agent Balance",
+      "description": "How evenly work is distributed (0 = one agent does all, 100 = perfectly balanced)",
+      "formula": "1 - (max_agent_share - expected_share) / expected_share",
+      "unit": "percent",
+      "direction": "higher_is_better",
+      "thresholds": {
+        "healthy": { "min": 60, "label": "🟢 Healthy", "action": "none" },
+        "warning": { "min": 40, "max": 59.99, "label": "🟡 Warning", "action": "Check if one agent is overloaded" },
+        "critical": { "max": 39.99, "label": "🔴 Critical", "action": "Rebalance; one agent handling >50% of all tasks" }
+      },
+      "current_value": null,
+      "trend": null,
+      "data_source": "routing_performance",
+      "notes": "Expected share = 25% per agent for 4 agents"
+    }
+  },
+
+  "composite_score": {
+    "name": "Federation Health Score",
+    "description": "Weighted average of all indicators",
+    "formula": "(FHI-001 * 0.25) + (FHI-002 * 0.25) + (FHI-003 * 0.20) + (FHI-004 * 0.15) + (FHI-005 * 0.15)",
+    "weights": {
+      "routing_accuracy": 0.25,
+      "handoff_efficiency": 0.25,
+      "queue_throughput": 0.20,
+      "cost_efficiency": 0.15,
+      "agent_balance": 0.15
+    },
+    "thresholds": {
+      "healthy": { "min": 80, "label": "🟢 Federation Healthy" },
+      "warning": { "min": 60, "max": 79.99, "label": "🟡 Federation Needs Attention" },
+      "critical": { "max": 59.99, "label": "🔴 Federation Unhealthy" }
+    },
+    "current_value": null
+  },
+
+  "trend_tracking": {
+    "retention_days": 30,
+    "snapshot_frequency": "daily",
+    "history_file": ".federation/analytics/archive/health-history.jsonl"
+  }
+}

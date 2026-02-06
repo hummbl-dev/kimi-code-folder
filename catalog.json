@@ -287,18 +287,25 @@
         "format": "json",
         "size_kb": 8,
         "purpose": "Index for tool/skill/doc discovery"
+      },
+      {
+        "file": "AGENT_FIRST_MANIFESTO.md",
+        "title": "The Agent First Philosophy - A Manifesto for AI-Native Organizations",
+        "audience": ["agents", "ai-assistants", "humans"],
+        "size_kb": 14,
+        "purpose": "Core philosophy: agency, layered iteration, division of labor, principles, case studies"
       }
     ],
-    "total_size_kb": 107,
-    "total_lines": 4500
+    "total_size_kb": 121,
+    "total_lines": 5000
   },
   
   "metadata": {
     "created": "2026-02-05",
     "last_updated": "2026-02-05",
-    "schema_version": "1.0",
+    "schema_version": "1.1",
     "catalog_type": "kimi_code_documentation",
-    "total_documentation_files": 12,
+    "total_documentation_files": 13,
     "organization": "Hummbl",
     "primary_audience": "AI agents",
     "repository": "https://github.com/hummbl-dev/kimi-code-folder",

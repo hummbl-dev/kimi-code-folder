@@ -1,0 +1,141 @@
+{
+  "version": "1.1",
+  "default_agent": "copilot",
+  "ambiguity_threshold": 0.60,
+  "auto_assign_threshold": 0.70,
+  "documentation": "See AGENT_ASSIGNMENTS.md for complementary routing rules and cost tiers",
+
+  "cost_tiers": {
+    "free": ["copilot", "ollama"],
+    "low": ["kimi"],
+    "medium": ["claude"],
+    "optimization": "Prefer free tier for drafts/prototyping, escalate to paid for production"
+  },
+
+  "explicit_patterns": [
+    {"pattern": "pass (this )?to (?P<agent>claude|kimi|copilot|ollama)", "confidence": 1.0, "extract_agent": true},
+    {"pattern": "@(?P<agent>claude|kimi|copilot|ollama)", "confidence": 1.0, "extract_agent": true},
+    {"pattern": "^(?P<agent>claude|kimi|copilot|ollama)[,:]", "confidence": 1.0, "extract_agent": true}
+  ],
+
+  "agents": {
+    "claude": {
+      "emoji": "📚",
+      "specialty": "research, documentation, architecture, analysis",
+      "primary_keywords": [
+        "research", "analyze", "synthesize", "document", "architecture",
+        "deep dive", "investigate", "compare", "evaluate", "pros and cons",
+        "tradeoffs", "design doc", "technical spec", "reasoning", "explain"
+      ],
+      "secondary_keywords": [
+        "understand", "why", "implications", "alternatives", "options",
+        "recommend", "advise", "assess", "review design", "long-form",
+        "whitepaper", "manifesto", "philosophy"
+      ],
+      "contextual_patterns": [
+        "what (does|is|are) .+ (mean|do|work)",
+        "how (does|should|would) .+ work",
+        "write (a |an )?(doc|document|analysis|report)",
+        "(2|3|two|three)(-| )page",
+        "summarize .+ (findings|research|options)"
+      ],
+      "negative_patterns": ["implement", "build", "deploy", "test", "quick"],
+      "security_keywords": ["security review", "threat model", "vulnerability", "pen test", "audit", "compliance"]
+    },
+
+    "kimi": {
+      "emoji": "🔧",
+      "specialty": "implementation, testing, deployment, multi-file execution",
+      "primary_keywords": [
+        "implement", "build", "deploy", "test", "refactor", "create file",
+        "execute", "fix", "migrate", "upgrade", "install", "configure", "scaffold"
+      ],
+      "secondary_keywords": [
+        "write code", "add feature", "bug fix", "patch", "update", "modify",
+        "change", "multi-file", "automation", "script", "pipeline", "ci/cd", "run"
+      ],
+      "contextual_patterns": [
+        "from (claude's|the) design",
+        "based on .+ spec",
+        "implement .+ (feature|system|module)",
+        "add .+ to .+ (file|component|module)",
+        "fix .+ (bug|issue|error)",
+        "set up .+ (environment|infrastructure)"
+      ],
+      "negative_patterns": ["research", "analyze", "think about", "philosophy"]
+    },
+
+    "copilot": {
+      "emoji": "💭",
+      "specialty": "thinking, planning, review, quick questions",
+      "primary_keywords": [
+        "think", "plan", "review", "clarify", "brainstorm", "help me understand",
+        "what do you think", "quick question", "feedback", "sanity check"
+      ],
+      "secondary_keywords": [
+        "outline", "structure", "organize", "prioritize", "decide", "choose",
+        "which", "approach", "strategy", "walkthrough", "explain code",
+        "code review", "inline"
+      ],
+      "contextual_patterns": [
+        "should (i|we) .+",
+        "is (this|it) .+ (right|correct|good)",
+        "what('s| is) the best way",
+        "help me (think|decide|figure)",
+        "review (this|my) (code|pr|change)"
+      ],
+      "negative_patterns": ["research", "implement", "deploy", "multi-file"]
+    },
+
+    "ollama": {
+      "emoji": "🏠",
+      "specialty": "drafting, prototyping, local work, fast iteration",
+      "primary_keywords": [
+        "draft", "prototype", "sketch", "rough version", "iterate",
+        "local", "offline", "quick draft", "experiment"
+      ],
+      "secondary_keywords": [
+        "try", "explore", "play with", "mock", "stub", "placeholder",
+        "first pass", "low stakes", "spike"
+      ],
+      "contextual_patterns": [
+        "just (try|draft|sketch)",
+        "quick and dirty",
+        "don't worry about (quality|perfection)",
+        "rough (draft|outline|sketch)",
+        "experiment with"
+      ],
+      "negative_patterns": ["production", "deploy", "critical", "important"]
+    }
+  },
+
+  "agent_metadata": {
+    "claude": {"cost_tier": "medium", "cost_per_task": "$0.10-0.50", "best_for": "research, architecture, analysis"},
+    "kimi": {"cost_tier": "low", "cost_per_task": "$0.05-0.15", "best_for": "implementation, deployment, multi-file"},
+    "copilot": {"cost_tier": "free", "cost_per_task": "$0", "best_for": "thinking, planning, quick questions"},
+    "ollama": {"cost_tier": "free", "cost_per_task": "$0", "best_for": "drafting, prototyping, offline work"}
+  },
+
+  "scoring": {
+    "explicit_mention": 1.0,
+    "primary_keyword": 0.95,
+    "secondary_keyword": 0.85,
+    "contextual_pattern": 0.75,
+    "negative_pattern_penalty": -0.20,
+    "multiple_keyword_bonus": 0.05,
+    "task_length_bonus": {"threshold": 50, "bonus": 0.02},
+    "tie_break_order": ["copilot", "claude", "kimi", "ollama"],
+    "auto_assign_threshold": 0.70,
+    "clarification_threshold": 0.60
+  },
+
+  "special_cases": [
+    {"condition": "contains 'SITREP' or 'sitrep'", "agent": "claude", "confidence": 0.98, "reason": "SITREP generation is analyst work (overrides deployment keywords)"},
+    {"condition": "contains 'PR' and 'review'", "agent": "copilot", "confidence": 0.90, "reason": "PR reviews are interactive thinking"},
+    {"condition": "contains 'deploy' and 'production'", "agent": "kimi", "confidence": 0.95, "requires_approval": true, "reason": "Production deployments need execution engine + human approval"},
+    {"condition": "starts with 'Why' or 'What is' or 'How does'", "agent": "claude", "confidence": 0.85, "reason": "Explanatory questions are research"},
+    {"condition": "contains file extension (.ts, .py, .md)", "agent": "kimi", "confidence_boost": 0.10, "reason": "File-specific work suggests execution"},
+    {"condition": "contains 'security' or 'threat model' or 'vulnerability' or 'pen test' or 'audit'", "agent": "claude", "confidence": 0.98, "reason": "Security analysis requires deep research and reasoning (overrides generic 'review' keyword)"},
+    {"condition": "contains 'security review' and 'code'", "agent": "claude", "confidence": 0.90, "reason": "Code security reviews need analysis"}
+  ]
+}

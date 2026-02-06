@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "description": "Federation Performance Metrics (Phase 4 Sprint 4)",
+  "routing_performance": {
+    "claude": {
+      "research_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null},
+      "documentation_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null},
+      "architecture_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null}
+    },
+    "kimi": {
+      "implementation_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null},
+      "deployment_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null},
+      "refactoring_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null}
+    },
+    "copilot": {
+      "thinking_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null},
+      "review_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null}
+    },
+    "ollama": {
+      "draft_tasks": {"count": 0, "success_rate": null, "avg_time": null, "rework_rate": null}
+    }
+  },
+  "queue_metrics": {
+    "total_tasks_created": 0,
+    "total_tasks_completed": 0,
+    "avg_completion_time": null,
+    "tasks_by_priority": {
+      "critical": 0,
+      "high": 0,
+      "normal": 0,
+      "low": 0
+    }
+  },
+  "handoff_metrics": {
+    "total_handoffs": 0,
+    "auto_scheduled": 0,
+    "manual_handoffs": 0,
+    "avg_handoff_time": null
+  },
+  "routing_accuracy": {
+    "keyword_based": {"correct": 0, "total": 0, "accuracy": null},
+    "predictive_v2": {"correct": 0, "total": 0, "accuracy": null}
+  },
+  "cost_tracking": {
+    "total_estimated_cost": 0,
+    "cost_by_agent": {
+      "claude": 0,
+      "kimi": 0,
+      "copilot": 0,
+      "ollama": 0
+    }
+  },
+  "last_updated": "2026-02-05T18:50:00Z"
+}

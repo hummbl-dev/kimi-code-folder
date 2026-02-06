@@ -29,6 +29,7 @@ Kimi Code CLI is an autonomous AI coding assistant that operates in your termina
 | Document | Purpose |
 |----------|---------|
 | **[README.md](./README.md)** | This file — your entry point |
+| **[AGENT_FIRST_MANIFESTO.md](./AGENT_FIRST_MANIFESTO.md)** | **Core philosophy** — Agent First principles, agency covenant, case studies |
 | **[ARCHITECTURE.md](./ARCHITECTURE.md)** | How Kimi Code works internally — tools, subagents, skills system |
 | **[USER-GUIDE.md](./USER-GUIDE.md)** | How to frame requests and get the best results |
 | **[TOOLS.md](./TOOLS.md)** | Complete reference for all built-in tools |

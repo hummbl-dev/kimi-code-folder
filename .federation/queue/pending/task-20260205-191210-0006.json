@@ -1,0 +1,14 @@
+{
+  "task_id": "task-20260205-191210-0006",
+  "status": "pending",
+  "created_at": "2026-02-05T19:12:10.354137",
+  "from_agent": "test",
+  "to_agent": "test",
+  "description": "test task",
+  "priority": "normal",
+  "dependencies": [],
+  "started_at": null,
+  "completed_at": null,
+  "result": null,
+  "context": {}
+}

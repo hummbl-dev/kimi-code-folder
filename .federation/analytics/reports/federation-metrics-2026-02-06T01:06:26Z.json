@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "generated_at": "2026-02-06T01:06:26Z",
+    "data_source": "FEDERATION_LOG.md",
+    "generator": "fed-stats.sh"
+  },
+  "summary": {
+    "total_handoffs": 3,
+    "active_chains": 1,
+    "completed_sprints": 3,
+    "total_artifacts": 29
+  },
+  "agents": {
+    "claude": {
+      "name": "Claude",
+      "emoji": "🔮",
+      "status": "active",
+      "log_mentions": 2,
+      "specialty": "Research & Analysis",
+      "cost_tier": "Medium"
+    },
+    "kimi": {
+      "name": "Kimi",
+      "emoji": "🔧",
+      "status": "active",
+      "log_mentions": 1,
+      "specialty": "Execution",
+      "cost_tier": "Low"
+    },
+    "copilot": {
+      "name": "Copilot",
+      "emoji": "💭",
+      "status": "active",
+      "log_mentions": 0,
+      "specialty": "Thinking & Planning",
+      "cost_tier": "Free"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "emoji": "🏠",
+      "status": "standby",
+      "log_mentions": 0,
+      "specialty": "Local Drafting",
+      "cost_tier": "Free"
+    }
+  },
+  "sprints": {
+    "sprint_1_foundation": "COMPLETE",
+    "sprint_2_auto_scheduling": "COMPLETE",
+    "sprint_3_voting": "COMPLETE",
+    "sprint_4_analytics": "COMPLETE",
+    "sprint_5_predictive": "PLANNED"
+  }
+}
