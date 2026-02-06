@@ -23,8 +23,24 @@ TRAINING_PATH = Path(__file__).parent.parent / ".federation" / "training_data.js
 INDEX_PATH = Path(__file__).parent.parent / ".federation" / "tfidf_index.json"
 EMBEDDING_CACHE = Path(__file__).parent.parent / ".federation" / "embeddings" / "ollama_index.json"
 
+# --- Agent Configuration ---
+
+# Minimum confidence thresholds per agent (tuned from confusion analysis)
+AGENT_THRESHOLDS = {
+    "kimi": 0.35,      # Lower threshold - kimi is the "doer", more permissive
+    "claude": 0.45,    # Higher threshold - avoid claude→kimi confusion
+    "copilot": 0.30,   # Lowest - copilot tasks are clear
+    "codex": 0.40,     # Medium - codex has clear patterns
+    "ollama": 0.50     # Highest - ollama most often confused with kimi
+}
+
+# Uncertainty routing: if confidence < threshold, route to fallback
+FALLBACK_AGENT = "kimi"  # Default fallback for uncertain tasks
+
+# Context window: remember last N routing decisions for consistency
+CONTEXT_WINDOW_SIZE = 3
+
 # --- Agent Taxonomy (5 agents) ---
-# Enhanced with phrase patterns and negative keywords for disambiguation
 
 AGENT_TAXONOMY = {
     "kimi": {
@@ -55,12 +71,14 @@ AGENT_TAXONOMY = {
             "compare", "evaluate", "review", "deep dive", "explain",
             "summarize", "assess", "strategy", "plan", "rfc", "adr",
             "trade-off", "pros cons", "long-term", "security audit",
-            "threat model", "literature", "specification", "whitepaper"
+            "threat model", "literature", "specification", "whitepaper",
+            "decision record", "technical debt"
         ],
         "phrase_patterns": [
             "evaluate trade", "pros and cons", "deep dive into", "compare vs",
             "assess the", "create a plan", "strategy for", "research into",
-            "analyze the", "document the"
+            "analyze the", "document the", "architecture decision",
+            "comprehensive architecture", "assess technical", "debt and create"
         ],
         "negative_keywords": [
             "implement", "build", "deploy", "fix", "create", "migrate",
@@ -118,7 +136,8 @@ AGENT_TAXONOMY = {
         "phrase_patterns": [
             "draft the", "sketch out", "brainstorm", "prototype of",
             "rough draft", "quick draft", "template for", "boilerplate",
-            "mock the", "stub for", "placeholder for"
+            "mock the", "stub for", "placeholder for",
+            "stub out", "generate ideas", "experiment with"
         ],
         "negative_keywords": [
             "implement", "build", "deploy", "fix", "migrate", "debug",
@@ -467,11 +486,37 @@ def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False,
     
     winner = max(final_scores, key=final_scores.get)
     confidence = final_scores[winner]
+    method_suffix = ""  # Default: no suffix
+    
+    # Apply agent-specific threshold
+    threshold = AGENT_THRESHOLDS.get(winner, 0.4)
+    
+    # Check for uncertainty - if below threshold, use fallback
+    if confidence < threshold:
+        # Try second-best
+        sorted_scores = sorted(final_scores.items(), key=lambda x: x[1], reverse=True)
+        if len(sorted_scores) >= 2:
+            second_agent, second_score = sorted_scores[1]
+            # Use second if it meets its threshold and is close
+            second_threshold = AGENT_THRESHOLDS.get(second_agent, 0.4)
+            if second_score >= second_threshold and (confidence - second_score) < 0.1:
+                winner = second_agent
+                confidence = second_score
+                method_suffix = "-threshold-adjusted"
+            else:
+                # Fall back to default
+                winner = FALLBACK_AGENT
+                confidence = final_scores.get(FALLBACK_AGENT, 0.3)
+                method_suffix = "-fallback"
+        else:
+            winner = FALLBACK_AGENT
+            confidence = final_scores.get(FALLBACK_AGENT, 0.3)
+            method_suffix = "-fallback"
     
     result = {
         "recommended_agent": winner,
         "confidence": round(confidence, 4),
-        "method": f"{tier}-ensemble",
+        "method": f"{tier}-ensemble{method_suffix}",
         "tier": tier,
         "weights": {
             "embedding": w_embed,

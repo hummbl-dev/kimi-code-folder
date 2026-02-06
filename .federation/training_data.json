@@ -598,5 +598,201 @@
   {
     "task": "Stub out test cases for new module",
     "agent": "ollama"
+  },
+  {
+    "task": "Research authentication patterns",
+    "agent": "claude"
+  },
+  {
+    "task": "Research auth patterns then build implementation",
+    "agent": "kimi"
+  },
+  {
+    "task": "Study OAuth2 specification deeply",
+    "agent": "claude"
+  },
+  {
+    "task": "Study OAuth2 then implement the flow",
+    "agent": "kimi"
+  },
+  {
+    "task": "Analyze payment gateway options",
+    "agent": "claude"
+  },
+  {
+    "task": "Analyze payment options then integrate Stripe",
+    "agent": "kimi"
+  },
+  {
+    "task": "Investigate database migration strategies",
+    "agent": "claude"
+  },
+  {
+    "task": "Investigate migration approaches then execute",
+    "agent": "kimi"
+  },
+  {
+    "task": "Evaluate caching solutions for our scale",
+    "agent": "claude"
+  },
+  {
+    "task": "Evaluate caches then implement Redis layer",
+    "agent": "kimi"
+  },
+  {
+    "task": "Survey monitoring and observability tools",
+    "agent": "claude"
+  },
+  {
+    "task": "Survey tools then deploy Datadog integration",
+    "agent": "kimi"
+  },
+  {
+    "task": "Compare message queue architectures",
+    "agent": "claude"
+  },
+  {
+    "task": "Compare queues then implement RabbitMQ",
+    "agent": "kimi"
+  },
+  {
+    "task": "Assess container orchestration options",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess orchestrators then migrate to Kubernetes",
+    "agent": "kimi"
+  },
+  {
+    "task": "Review API design patterns",
+    "agent": "claude"
+  },
+  {
+    "task": "Review patterns then refactor endpoints",
+    "agent": "kimi"
+  },
+  {
+    "task": "Exine security vulnerabilities in auth",
+    "agent": "claude"
+  },
+  {
+    "task": "Exine security issues then patch them",
+    "agent": "kimi"
+  },
+  {
+    "task": "Draft the API specification",
+    "agent": "ollama"
+  },
+  {
+    "task": "Draft spec then review with team",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch the data model ideas",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch models then validate approach",
+    "agent": "ollama"
+  },
+  {
+    "task": "Prototype the React component locally",
+    "agent": "ollama"
+  },
+  {
+    "task": "Prototype component then share for feedback",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm feature naming conventions",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm names then document choices",
+    "agent": "ollama"
+  },
+  {
+    "task": "Mock the API responses",
+    "agent": "ollama"
+  },
+  {
+    "task": "Mock responses then build frontend against them",
+    "agent": "ollama"
+  },
+  {
+    "task": "Template for new service boilerplate",
+    "agent": "ollama"
+  },
+  {
+    "task": "Template service then customize for use case",
+    "agent": "ollama"
+  },
+  {
+    "task": "Rough draft of deployment runbook",
+    "agent": "ollama"
+  },
+  {
+    "task": "Draft runbook then test in staging",
+    "agent": "ollama"
+  },
+  {
+    "task": "Experiment with CSS Grid layout options",
+    "agent": "ollama"
+  },
+  {
+    "task": "Experiment with layouts then implement",
+    "agent": "ollama"
+  },
+  {
+    "task": "Stub out the test cases",
+    "agent": "ollama"
+  },
+  {
+    "task": "Stub tests then implement the module",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate ideas for error handling",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate error strategies then implement",
+    "agent": "ollama"
+  },
+  {
+    "task": "Quick inline fix for the null pointer",
+    "agent": "copilot"
+  },
+  {
+    "task": "Complete this function signature",
+    "agent": "copilot"
+  },
+  {
+    "task": "Type definition for the user object",
+    "agent": "copilot"
+  },
+  {
+    "task": "Extract this into a helper method",
+    "agent": "copilot"
+  },
+  {
+    "task": "Rename variable to be more descriptive",
+    "agent": "copilot"
+  },
+  {
+    "task": "Suggest improvement for this loop",
+    "agent": "copilot"
+  },
+  {
+    "task": "Clean up this nested conditional",
+    "agent": "copilot"
+  },
+  {
+    "task": "Add JSDoc to this function",
+    "agent": "copilot"
+  },
+  {
+    "task": "Refactor to use async/await",
+    "agent": "copilot"
   }
 ]
