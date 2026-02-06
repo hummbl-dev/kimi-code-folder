@@ -1,806 +1,1080 @@
 {
   "idf": {
-    "deployment": 4.349904087274605,
-    "actions": 4.349904087274605,
-    "pipeline": 4.349904087274605,
-    "automate": 4.349904087274605,
-    "github": 4.349904087274605,
-    "document": 3.6567569067146595,
-    "security": 3.9444389791664403,
-    "findings": 4.349904087274605,
-    "audit": 4.349904087274605,
-    "migration": 3.9444389791664403,
-    "create": 3.4336133554004498,
-    "postgresql": 4.349904087274605,
-    "script": 4.349904087274605,
-    "database": 3.2512917986064953,
-    "names": 4.349904087274605,
-    "feature": 3.9444389791664403,
-    "product": 4.349904087274605,
-    "brainstorm": 4.349904087274605,
-    "new": 3.6567569067146595,
-    "upload": 4.349904087274605,
-    "file": 3.9444389791664403,
-    "build": 3.097141118779237,
-    "service": 3.9444389791664403,
-    "validation": 3.9444389791664403,
-    "api": 3.097141118779237,
-    "decisions": 4.349904087274605,
-    "architecture": 3.9444389791664403,
-    "design": 4.349904087274605,
-    "function": 3.6567569067146595,
-    "up": 4.349904087274605,
-    "long": 4.349904087274605,
-    "clean": 4.349904087274605,
-    "auto": 4.349904087274605,
-    "scaling": 4.349904087274605,
-    "configure": 4.349904087274605,
-    "kubernetes": 4.349904087274605,
-    "scripts": 4.349904087274605,
-    "shell": 4.349904087274605,
-    "backups": 4.349904087274605,
-    "review": 3.4336133554004498,
-    "refactor": 4.349904087274605,
-    "module": 3.2512917986064953,
-    "deeply": 4.349904087274605,
-    "single": 3.9444389791664403,
-    "files": 4.349904087274605,
-    "deploy": 3.9444389791664403,
-    "across": 3.4336133554004498,
-    "auth": 3.9444389791664403,
-    "quickly": 4.349904087274605,
-    "draft": 3.4336133554004498,
-    "quick": 3.6567569067146595,
-    "spec": 3.6567569067146595,
-    "payment": 3.9444389791664403,
-    "end": 3.9444389791664403,
-    "processing": 4.349904087274605,
-    "our": 3.9444389791664403,
-    "scale": 4.349904087274605,
-    "microservices": 3.6567569067146595,
-    "research": 3.6567569067146595,
-    "patterns": 4.349904087274605,
-    "notification": 4.349904087274605,
-    "focused": 4.349904087274605,
-    "codebase": 4.349904087274605,
-    "improvements": 3.9444389791664403,
-    "architectural": 4.349904087274605,
-    "plan": 4.349904087274605,
-    "monolith": 4.349904087274605,
-    "snippet": 4.349904087274605,
-    "code": 4.349904087274605,
-    "suggest": 4.349904087274605,
-    "offline": 4.349904087274605,
-    "readme": 4.349904087274605,
-    "outline": 4.349904087274605,
-    "write": 4.349904087274605,
-    "generate": 4.349904087274605,
-    "ideas": 3.9444389791664403,
-    "copy": 4.349904087274605,
-    "page": 4.349904087274605,
-    "landing": 4.349904087274605,
-    "rate": 4.349904087274605,
-    "middleware": 4.349904087274605,
-    "limiting": 4.349904087274605,
-    "express": 4.349904087274605,
-    "implement": 3.097141118779237,
-    "failures": 4.349904087274605,
-    "fix": 3.4336133554004498,
-    "modules": 4.349904087274605,
-    "run": 4.349904087274605,
-    "tests": 3.9444389791664403,
-    "use": 4.349904087274605,
-    "case": 4.349904087274605,
-    "vs": 3.9444389791664403,
-    "rest": 3.9444389791664403,
-    "compare": 4.349904087274605,
-    "graphql": 4.349904087274605,
-    "cd": 4.349904087274605,
-    "ci": 4.349904087274605,
-    "production": 4.349904087274605,
-    "registration": 4.349904087274605,
-    "system": 4.349904087274605,
-    "user": 3.6567569067146595,
-    "template": 4.349904087274605,
-    "component": 3.9444389791664403,
-    "react": 3.9444389791664403,
-    "complete": 3.9444389791664403,
-    "dashboard": 4.349904087274605,
-    "scratch": 3.9444389791664403,
-    "requirements": 4.349904087274605,
-    "deep": 3.6567569067146595,
-    "compliance": 4.349904087274605,
-    "extract": 4.349904087274605,
-    "logic": 3.9444389791664403,
-    "separate": 4.349904087274605,
-    "options": 4.349904087274605,
-    "postgres": 4.349904087274605,
-    "evaluate": 4.349904087274605,
-    "mongo": 4.349904087274605,
-    "mysql": 4.349904087274605,
-    "bugs": 3.9444389791664403,
-    "prototype": 4.349904087274605,
-    "integration": 4.349904087274605,
-    "layer": 4.349904087274605,
-    "caching": 4.349904087274605,
-    "develop": 4.349904087274605,
-    "redis": 4.349904087274605,
-    "models": 4.349904087274605,
-    "data": 4.349904087274605,
-    "rough": 4.349904087274605,
-    "analyze": 3.9444389791664403,
-    "flow": 3.9444389791664403,
-    "vulnerabilities": 4.349904087274605,
-    "core": 4.349904087274605,
-    "business": 4.349904087274605,
-    "authentication": 3.9444389791664403,
-    "crud": 4.349904087274605,
-    "management": 4.349904087274605,
-    "full": 4.349904087274605,
-    "optimize": 4.349904087274605,
-    "dive": 3.9444389791664403,
-    "indexer": 4.349904087274605,
-    "search": 4.349904087274605,
-    "autonomous": 4.349904087274605,
-    "implementation": 3.9444389791664403,
-    "rename": 4.349904087274605,
-    "format": 4.349904087274605,
-    "variables": 4.349904087274605,
-    "practices": 3.9444389791664403,
-    "best": 3.9444389791664403,
-    "them": 4.349904087274605,
-    "then": 4.349904087274605,
-    "oauth": 4.349904087274605,
-    "rfc": 4.349904087274605,
-    "comprehensive": 4.349904087274605,
-    "sketch": 4.349904087274605,
-    "out": 4.349904087274605,
-    "schema": 4.349904087274605,
-    "testing": 4.349904087274605,
-    "responses": 4.349904087274605,
-    "mock": 4.349904087274605,
-    "frontend": 4.349904087274605,
-    "backend": 4.349904087274605,
-    "strategy": 4.349904087274605,
-    "handling": 4.349904087274605,
-    "spikes": 4.349904087274605,
-    "high": 4.349904087274605,
-    "traffic": 4.349904087274605,
-    "update": 4.349904087274605,
-    "root": 4.349904087274605,
-    "bug": 4.349904087274605,
-    "cause": 4.349904087274605,
-    "wiki": 4.349904087274605,
-    "object": 4.349904087274605,
-    "definition": 4.349904087274605,
-    "type": 4.349904087274605,
-    "image": 4.349904087274605,
-    "batch": 4.349904087274605,
-    "uploads": 4.349904087274605,
-    "process": 4.349904087274605,
-    "jwt": 4.349904087274605,
-    "stack": 4.349904087274605,
-    "performance": 4.349904087274605,
-    "chat": 4.349904087274605,
-    "websocket": 4.349904087274605,
-    "server": 4.349904087274605,
-    "html": 4.349904087274605,
-    "tool": 4.349904087274605,
-    "converts": 4.349904087274605,
-    "cli": 4.349904087274605,
-    "markdown": 4.349904087274605
+    "new": 4.295836866004329,
+    "feature": 4.295836866004329,
+    "product": 4.701301974112493,
+    "brainstorm": 4.701301974112493,
+    "names": 4.701301974112493,
+    "schema": 4.701301974112493,
+    "ideas": 4.008154793552548,
+    "sketch": 4.295836866004329,
+    "out": 4.701301974112493,
+    "database": 3.6026896854443837,
+    "layer": 4.295836866004329,
+    "caching": 3.785011242238338,
+    "module": 3.315007612992603,
+    "build": 3.1972245773362196,
+    "redis": 4.295836866004329,
+    "develop": 4.701301974112493,
+    "integration": 4.701301974112493,
+    "format": 4.701301974112493,
+    "rename": 4.295836866004329,
+    "file": 4.295836866004329,
+    "variables": 4.701301974112493,
+    "quick": 3.315007612992603,
+    "auth": 3.4485390056171252,
+    "files": 4.701301974112493,
+    "deploy": 4.295836866004329,
+    "quickly": 4.701301974112493,
+    "across": 3.1972245773362196,
+    "server": 4.295836866004329,
+    "implement": 3.0918640616783932,
+    "chat": 4.701301974112493,
+    "spec": 4.008154793552548,
+    "websocket": 4.701301974112493,
+    "authentication": 4.008154793552548,
+    "scratch": 3.785011242238338,
+    "automate": 4.701301974112493,
+    "github": 4.701301974112493,
+    "deployment": 4.701301974112493,
+    "actions": 4.701301974112493,
+    "pipeline": 4.701301974112493,
+    "payment": 3.6026896854443837,
+    "fix": 3.315007612992603,
+    "validation": 4.008154793552548,
+    "variable": 4.701301974112493,
+    "token": 4.701301974112493,
+    "microservices": 4.295836866004329,
+    "complete": 4.295836866004329,
+    "user": 3.4485390056171252,
+    "dashboard": 4.701301974112493,
+    "logic": 4.295836866004329,
+    "core": 4.701301974112493,
+    "business": 4.701301974112493,
+    "research": 3.4485390056171252,
+    "implementation": 4.008154793552548,
+    "patterns": 4.295836866004329,
+    "then": 4.295836866004329,
+    "responses": 4.701301974112493,
+    "testing": 4.295836866004329,
+    "mock": 4.295836866004329,
+    "api": 3.6026896854443837,
+    "generate": 4.701301974112493,
+    "page": 4.701301974112493,
+    "copy": 4.701301974112493,
+    "landing": 4.701301974112493,
+    "configure": 4.295836866004329,
+    "infrastructure": 4.701301974112493,
+    "regions": 4.701301974112493,
+    "service": 4.008154793552548,
+    "create": 3.6026896854443837,
+    "message": 4.701301974112493,
+    "change": 4.701301974112493,
+    "error": 4.701301974112493,
+    "small": 4.701301974112493,
+    "typo": 4.701301974112493,
+    "bugs": 4.295836866004329,
+    "react": 4.295836866004329,
+    "component": 4.295836866004329,
+    "review": 3.6026896854443837,
+    "flow": 3.6026896854443837,
+    "security": 4.295836866004329,
+    "vulnerabilities": 4.701301974112493,
+    "analyze": 4.295836866004329,
+    "function": 3.785011242238338,
+    "management": 4.295836866004329,
+    "data": 4.295836866004329,
+    "models": 4.701301974112493,
+    "rough": 4.701301974112493,
+    "draft": 3.4485390056171252,
+    "decisions": 4.295836866004329,
+    "architecture": 4.008154793552548,
+    "notification": 3.785011242238338,
+    "document": 4.008154793552548,
+    "best": 4.295836866004329,
+    "oauth": 4.295836866004329,
+    "practices": 4.295836866004329,
+    "dive": 4.701301974112493,
+    "deep": 4.295836866004329,
+    "environments": 4.701301974112493,
+    "search": 4.008154793552548,
+    "suggest": 4.701301974112493,
+    "snippet": 4.701301974112493,
+    "improvements": 4.295836866004329,
+    "code": 4.701301974112493,
+    "limiting": 4.701301974112493,
+    "middleware": 4.701301974112493,
+    "rate": 4.701301974112493,
+    "express": 4.295836866004329,
+    "boilerplate": 4.701301974112493,
+    "rfc": 4.701301974112493,
+    "comprehensive": 4.701301974112493,
+    "jwt": 4.701301974112493,
+    "specification": 4.701301974112493,
+    "outline": 4.701301974112493,
+    "offline": 4.701301974112493,
+    "write": 4.701301974112493,
+    "readme": 4.701301974112493,
+    "compliance": 4.008154793552548,
+    "gdpr": 4.701301974112493,
+    "prototype": 4.008154793552548,
+    "tests": 4.008154793552548,
+    "templates": 4.701301974112493,
+    "frontend": 4.295836866004329,
+    "backend": 4.295836866004329,
+    "separate": 4.701301974112493,
+    "extract": 4.295836866004329,
+    "our": 4.008154793552548,
+    "rest": 4.295836866004329,
+    "vs": 4.008154793552548,
+    "graphql": 4.701301974112493,
+    "case": 4.295836866004329,
+    "compare": 4.701301974112493,
+    "use": 4.008154793552548,
+    "long": 4.701301974112493,
+    "clean": 4.701301974112493,
+    "up": 4.295836866004329,
+    "kubernetes": 4.701301974112493,
+    "auto": 4.701301974112493,
+    "scaling": 4.701301974112493,
+    "findings": 4.701301974112493,
+    "audit": 4.701301974112493,
+    "registration": 4.701301974112493,
+    "system": 4.701301974112493,
+    "end": 4.701301974112493,
+    "autonomous": 4.701301974112493,
+    "upload": 4.701301974112493,
+    "inline": 4.701301974112493,
+    "how": 4.701301974112493,
+    "hint": 4.701301974112493,
+    "hook": 4.701301974112493,
+    "helper": 4.701301974112493,
+    "template": 4.701301974112493,
+    "tool": 4.701301974112493,
+    "markdown": 4.701301974112493,
+    "cli": 4.701301974112493,
+    "converts": 4.701301974112493,
+    "html": 4.701301974112493,
+    "them": 4.701301974112493,
+    "scripts": 4.701301974112493,
+    "shell": 4.701301974112493,
+    "backups": 4.701301974112493,
+    "object": 4.701301974112493,
+    "type": 4.295836866004329,
+    "definition": 4.701301974112493,
+    "stack": 4.701301974112493,
+    "performance": 4.701301974112493,
+    "requirements": 4.295836866004329,
+    "design": 4.701301974112493,
+    "focused": 4.701301974112493,
+    "postgres": 4.701301974112493,
+    "options": 4.701301974112493,
+    "mysql": 4.701301974112493,
+    "evaluate": 4.295836866004329,
+    "mongo": 4.701301974112493,
+    "script": 4.701301974112493,
+    "migration": 4.701301974112493,
+    "postgresql": 4.701301974112493,
+    "high": 4.701301974112493,
+    "traffic": 4.701301974112493,
+    "spikes": 4.701301974112493,
+    "handling": 4.701301974112493,
+    "strategy": 4.701301974112493,
+    "add": 4.701301974112493,
+    "notifications": 4.701301974112493,
+    "email": 4.701301974112493,
+    "mobile": 4.295836866004329,
+    "web": 4.701301974112493,
+    "failures": 4.701301974112493,
+    "modules": 4.701301974112493,
+    "run": 4.701301974112493,
+    "pci": 4.701301974112493,
+    "concept": 4.701301974112493,
+    "fast": 4.701301974112493,
+    "ui": 4.701301974112493,
+    "concepts": 4.701301974112493,
+    "ux": 4.701301974112493,
+    "scale": 4.701301974112493,
+    "crud": 4.701301974112493,
+    "full": 4.701301974112493,
+    "locally": 4.701301974112493,
+    "strategies": 4.701301974112493,
+    "environment": 4.701301974112493,
+    "set": 4.701301974112493,
+    "entire": 4.701301974112493,
+    "development": 4.701301974112493,
+    "memcached": 4.701301974112493,
+    "deeply": 4.701301974112493,
+    "single": 4.701301974112493,
+    "refactor": 4.701301974112493,
+    "optimization": 4.701301974112493,
+    "query": 4.701301974112493,
+    "architectural": 4.701301974112493,
+    "codebase": 4.701301974112493,
+    "services": 4.701301974112493,
+    "integrate": 4.701301974112493,
+    "processing": 4.701301974112493
   },
   "documents": [
-    {
-      "task": "Automate the deployment pipeline with GitHub Actions",
-      "agent": "kimi",
-      "tfidf": {
-        "automate": 4.349904087274605,
-        "deployment": 4.349904087274605,
-        "pipeline": 4.349904087274605,
-        "github": 4.349904087274605,
-        "actions": 4.349904087274605
-      }
-    },
-    {
-      "task": "Document the security audit findings",
-      "agent": "claude",
-      "tfidf": {
-        "document": 3.6567569067146595,
-        "security": 3.9444389791664403,
-        "audit": 4.349904087274605,
-        "findings": 4.349904087274605
-      }
-    },
-    {
-      "task": "Create a database migration script for PostgreSQL",
-      "agent": "codex",
-      "tfidf": {
-        "create": 3.4336133554004498,
-        "database": 3.2512917986064953,
-        "migration": 3.9444389791664403,
-        "script": 4.349904087274605,
-        "postgresql": 4.349904087274605
-      }
-    },
     {
       "task": "Brainstorm feature names for the new product",
       "agent": "ollama",
       "tfidf": {
-        "brainstorm": 4.349904087274605,
-        "feature": 3.9444389791664403,
-        "names": 4.349904087274605,
-        "new": 3.6567569067146595,
-        "product": 4.349904087274605
-      }
-    },
-    {
-      "task": "Build a file upload service with validation",
-      "agent": "codex",
-      "tfidf": {
-        "build": 3.097141118779237,
-        "file": 3.9444389791664403,
-        "upload": 4.349904087274605,
-        "service": 3.9444389791664403,
-        "validation": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Document the API architecture and design decisions",
-      "agent": "claude",
-      "tfidf": {
-        "document": 3.6567569067146595,
-        "api": 3.097141118779237,
-        "architecture": 3.9444389791664403,
-        "design": 4.349904087274605,
-        "decisions": 4.349904087274605
-      }
-    },
-    {
-      "task": "Clean up this function - it's too long",
-      "agent": "copilot",
-      "tfidf": {
-        "clean": 4.349904087274605,
-        "up": 4.349904087274605,
-        "function": 3.6567569067146595,
-        "long": 4.349904087274605
-      }
-    },
-    {
-      "task": "Configure Kubernetes for auto-scaling",
-      "agent": "kimi",
-      "tfidf": {
-        "configure": 4.349904087274605,
-        "kubernetes": 4.349904087274605,
-        "auto": 4.349904087274605,
-        "scaling": 4.349904087274605
-      }
-    },
-    {
-      "task": "Create shell scripts for database backups",
-      "agent": "kimi",
-      "tfidf": {
-        "create": 3.4336133554004498,
-        "shell": 4.349904087274605,
-        "scripts": 4.349904087274605,
-        "database": 3.2512917986064953,
-        "backups": 4.349904087274605
-      }
-    },
-    {
-      "task": "Review and refactor this single module deeply",
-      "agent": "codex",
-      "tfidf": {
-        "review": 3.4336133554004498,
-        "refactor": 4.349904087274605,
-        "single": 3.9444389791664403,
-        "module": 3.2512917986064953,
-        "deeply": 4.349904087274605
-      }
-    },
-    {
-      "task": "Quickly build and deploy auth across 3 files",
-      "agent": "kimi",
-      "tfidf": {
-        "quickly": 4.349904087274605,
-        "build": 3.097141118779237,
-        "deploy": 3.9444389791664403,
-        "auth": 3.9444389791664403,
-        "across": 3.4336133554004498,
-        "files": 4.349904087274605
-      }
-    },
-    {
-      "task": "Draft a quick API spec to review",
-      "agent": "ollama",
-      "tfidf": {
-        "draft": 3.4336133554004498,
-        "quick": 3.6567569067146595,
-        "api": 3.097141118779237,
-        "spec": 3.6567569067146595,
-        "review": 3.4336133554004498
-      }
-    },
-    {
-      "task": "Build the payment processing module end to end",
-      "agent": "codex",
-      "tfidf": {
-        "build": 1.5485705593896184,
-        "payment": 1.9722194895832201,
-        "processing": 2.1749520436373024,
-        "module": 1.6256458993032477,
-        "end": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Research microservices patterns for our scale",
-      "agent": "claude",
-      "tfidf": {
-        "research": 3.6567569067146595,
-        "microservices": 3.6567569067146595,
-        "patterns": 4.349904087274605,
-        "our": 3.9444389791664403,
-        "scale": 4.349904087274605
-      }
-    },
-    {
-      "task": "Focused module: build the notification service",
-      "agent": "codex",
-      "tfidf": {
-        "focused": 4.349904087274605,
-        "module": 3.2512917986064953,
-        "build": 3.097141118779237,
-        "notification": 4.349904087274605,
-        "service": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Review the codebase for architectural improvements",
-      "agent": "claude",
-      "tfidf": {
-        "review": 3.4336133554004498,
-        "codebase": 4.349904087274605,
-        "architectural": 4.349904087274605,
-        "improvements": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Plan the migration from monolith to microservices",
-      "agent": "claude",
-      "tfidf": {
-        "plan": 4.349904087274605,
-        "migration": 3.9444389791664403,
-        "monolith": 4.349904087274605,
-        "microservices": 3.6567569067146595
-      }
-    },
-    {
-      "task": "Suggest improvements for this code snippet",
-      "agent": "copilot",
-      "tfidf": {
-        "suggest": 4.349904087274605,
-        "improvements": 3.9444389791664403,
-        "code": 4.349904087274605,
-        "snippet": 4.349904087274605
-      }
-    },
-    {
-      "task": "Offline draft: write the README outline",
-      "agent": "ollama",
-      "tfidf": {
-        "offline": 4.349904087274605,
-        "draft": 3.4336133554004498,
-        "write": 4.349904087274605,
-        "readme": 4.349904087274605,
-        "outline": 4.349904087274605
-      }
-    },
-    {
-      "task": "Generate ideas for the landing page copy",
-      "agent": "ollama",
-      "tfidf": {
-        "generate": 4.349904087274605,
-        "ideas": 3.9444389791664403,
-        "landing": 4.349904087274605,
-        "page": 4.349904087274605,
-        "copy": 4.349904087274605
-      }
-    },
-    {
-      "task": "Implement rate limiting middleware for Express",
-      "agent": "codex",
-      "tfidf": {
-        "implement": 3.097141118779237,
-        "rate": 4.349904087274605,
-        "limiting": 4.349904087274605,
-        "middleware": 4.349904087274605,
-        "express": 4.349904087274605
-      }
-    },
-    {
-      "task": "Run tests and fix failures across all modules",
-      "agent": "kimi",
-      "tfidf": {
-        "run": 4.349904087274605,
-        "tests": 3.9444389791664403,
-        "fix": 3.4336133554004498,
-        "failures": 4.349904087274605,
-        "across": 3.4336133554004498,
-        "modules": 4.349904087274605
-      }
-    },
-    {
-      "task": "Compare GraphQL vs REST for our use case",
-      "agent": "claude",
-      "tfidf": {
-        "compare": 4.349904087274605,
-        "graphql": 4.349904087274605,
-        "vs": 3.9444389791664403,
-        "rest": 3.9444389791664403,
-        "our": 3.9444389791664403,
-        "use": 4.349904087274605,
-        "case": 4.349904087274605
-      }
-    },
-    {
-      "task": "Deploy the new API to production with CI/CD",
-      "agent": "kimi",
-      "tfidf": {
-        "deploy": 3.9444389791664403,
-        "new": 3.6567569067146595,
-        "api": 3.097141118779237,
-        "production": 4.349904087274605,
-        "ci": 4.349904087274605,
-        "cd": 4.349904087274605
-      }
-    },
-    {
-      "task": "End-to-end feature: user registration system",
-      "agent": "codex",
-      "tfidf": {
-        "end": 3.9444389791664403,
-        "feature": 1.9722194895832201,
-        "user": 1.8283784533573297,
-        "registration": 2.1749520436373024,
-        "system": 2.1749520436373024
-      }
-    },
-    {
-      "task": "Template for the new React component",
-      "agent": "ollama",
-      "tfidf": {
-        "template": 4.349904087274605,
-        "new": 3.6567569067146595,
-        "react": 3.9444389791664403,
-        "component": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Build a complete user dashboard from scratch",
-      "agent": "codex",
-      "tfidf": {
-        "build": 3.097141118779237,
-        "complete": 3.9444389791664403,
-        "user": 3.6567569067146595,
-        "dashboard": 4.349904087274605,
-        "scratch": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Deep research into compliance requirements",
-      "agent": "claude",
-      "tfidf": {
-        "deep": 3.6567569067146595,
-        "research": 3.6567569067146595,
-        "compliance": 4.349904087274605,
-        "requirements": 4.349904087274605
-      }
-    },
-    {
-      "task": "Extract this logic into a separate function",
-      "agent": "copilot",
-      "tfidf": {
-        "extract": 4.349904087274605,
-        "logic": 3.9444389791664403,
-        "separate": 4.349904087274605,
-        "function": 3.6567569067146595
-      }
-    },
-    {
-      "task": "Evaluate database options: Postgres vs MySQL vs Mongo",
-      "agent": "claude",
-      "tfidf": {
-        "evaluate": 2.1749520436373024,
-        "database": 1.6256458993032477,
-        "options": 2.1749520436373024,
-        "postgres": 2.1749520436373024,
-        "vs": 3.9444389791664403,
-        "mysql": 2.1749520436373024,
-        "mongo": 2.1749520436373024
-      }
-    },
-    {
-      "task": "Review this React component for bugs",
-      "agent": "copilot",
-      "tfidf": {
-        "review": 3.4336133554004498,
-        "react": 3.9444389791664403,
-        "component": 3.9444389791664403,
-        "bugs": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Draft a quick prototype API with tests",
-      "agent": "kimi",
-      "tfidf": {
-        "draft": 3.4336133554004498,
-        "quick": 3.6567569067146595,
-        "prototype": 4.349904087274605,
-        "api": 3.097141118779237,
-        "tests": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Develop a caching layer with Redis integration",
-      "agent": "codex",
-      "tfidf": {
-        "develop": 4.349904087274605,
-        "caching": 4.349904087274605,
-        "layer": 4.349904087274605,
-        "redis": 4.349904087274605,
-        "integration": 4.349904087274605
-      }
-    },
-    {
-      "task": "Rough draft of the data models",
-      "agent": "ollama",
-      "tfidf": {
-        "rough": 4.349904087274605,
-        "draft": 3.4336133554004498,
-        "data": 4.349904087274605,
-        "models": 4.349904087274605
-      }
-    },
-    {
-      "task": "Analyze the security vulnerabilities in auth flow",
-      "agent": "claude",
-      "tfidf": {
-        "analyze": 3.9444389791664403,
-        "security": 3.9444389791664403,
-        "vulnerabilities": 4.349904087274605,
-        "auth": 3.9444389791664403,
-        "flow": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Implement the core business logic module",
-      "agent": "codex",
-      "tfidf": {
-        "implement": 3.097141118779237,
-        "core": 4.349904087274605,
-        "business": 4.349904087274605,
-        "logic": 3.9444389791664403,
-        "module": 3.2512917986064953
-      }
-    },
-    {
-      "task": "Implement authentication across 5 microservices",
-      "agent": "kimi",
-      "tfidf": {
-        "implement": 3.097141118779237,
-        "authentication": 3.9444389791664403,
-        "across": 3.4336133554004498,
-        "microservices": 3.6567569067146595
-      }
-    },
-    {
-      "task": "Build a REST API for user management with full CRUD",
-      "agent": "codex",
-      "tfidf": {
-        "build": 3.097141118779237,
-        "rest": 3.9444389791664403,
-        "api": 3.097141118779237,
-        "user": 3.6567569067146595,
-        "management": 4.349904087274605,
-        "full": 4.349904087274605,
-        "crud": 4.349904087274605
-      }
-    },
-    {
-      "task": "Single module deep dive: optimize the search indexer",
-      "agent": "codex",
-      "tfidf": {
-        "single": 3.9444389791664403,
-        "module": 3.2512917986064953,
-        "deep": 3.6567569067146595,
-        "dive": 3.9444389791664403,
-        "optimize": 4.349904087274605,
-        "search": 4.349904087274605,
-        "indexer": 4.349904087274605
-      }
-    },
-    {
-      "task": "Autonomous implementation of the payment flow",
-      "agent": "codex",
-      "tfidf": {
-        "autonomous": 4.349904087274605,
-        "implementation": 3.9444389791664403,
-        "payment": 3.9444389791664403,
-        "flow": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Quick format this file and rename variables",
-      "agent": "copilot",
-      "tfidf": {
-        "quick": 3.6567569067146595,
-        "format": 4.349904087274605,
-        "file": 3.9444389791664403,
-        "rename": 4.349904087274605,
-        "variables": 4.349904087274605
-      }
-    },
-    {
-      "task": "Research best practices then implement them",
-      "agent": "kimi",
-      "tfidf": {
-        "research": 3.6567569067146595,
-        "best": 3.9444389791664403,
-        "practices": 3.9444389791664403,
-        "then": 4.349904087274605,
-        "implement": 3.097141118779237,
-        "them": 4.349904087274605
-      }
-    },
-    {
-      "task": "Deep dive into OAuth2 spec and best practices",
-      "agent": "claude",
-      "tfidf": {
-        "deep": 3.6567569067146595,
-        "dive": 3.9444389791664403,
-        "oauth": 4.349904087274605,
-        "spec": 3.6567569067146595,
-        "best": 3.9444389791664403,
-        "practices": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Create a comprehensive architecture RFC",
-      "agent": "claude",
-      "tfidf": {
-        "create": 3.4336133554004498,
-        "comprehensive": 4.349904087274605,
-        "architecture": 3.9444389791664403,
-        "rfc": 4.349904087274605
+        "brainstorm": 4.701301974112493,
+        "feature": 4.295836866004329,
+        "names": 4.701301974112493,
+        "new": 4.295836866004329,
+        "product": 4.701301974112493
       }
     },
     {
       "task": "Sketch out the database schema ideas",
       "agent": "ollama",
       "tfidf": {
-        "sketch": 4.349904087274605,
-        "out": 4.349904087274605,
-        "database": 3.2512917986064953,
-        "schema": 4.349904087274605,
-        "ideas": 3.9444389791664403
+        "sketch": 4.295836866004329,
+        "out": 4.701301974112493,
+        "database": 3.6026896854443837,
+        "schema": 4.701301974112493,
+        "ideas": 4.008154793552548
       }
     },
     {
-      "task": "Mock the API responses for testing",
-      "agent": "ollama",
-      "tfidf": {
-        "mock": 4.349904087274605,
-        "api": 3.097141118779237,
-        "responses": 4.349904087274605,
-        "testing": 4.349904087274605
-      }
-    },
-    {
-      "task": "Fix bugs in the frontend, backend, and database",
-      "agent": "kimi",
-      "tfidf": {
-        "fix": 3.4336133554004498,
-        "bugs": 3.9444389791664403,
-        "frontend": 4.349904087274605,
-        "backend": 4.349904087274605,
-        "database": 3.2512917986064953
-      }
-    },
-    {
-      "task": "Strategy for handling high traffic spikes",
-      "agent": "claude",
-      "tfidf": {
-        "strategy": 4.349904087274605,
-        "handling": 4.349904087274605,
-        "high": 4.349904087274605,
-        "traffic": 4.349904087274605,
-        "spikes": 4.349904087274605
-      }
-    },
-    {
-      "task": "Fix the bug, document the root cause, and update the wiki",
-      "agent": "kimi",
-      "tfidf": {
-        "fix": 3.4336133554004498,
-        "bug": 4.349904087274605,
-        "document": 3.6567569067146595,
-        "root": 4.349904087274605,
-        "cause": 4.349904087274605,
-        "update": 4.349904087274605,
-        "wiki": 4.349904087274605
-      }
-    },
-    {
-      "task": "Type definition for this object",
-      "agent": "copilot",
-      "tfidf": {
-        "type": 4.349904087274605,
-        "definition": 4.349904087274605,
-        "object": 4.349904087274605
-      }
-    },
-    {
-      "task": "Complete this function implementation",
-      "agent": "copilot",
-      "tfidf": {
-        "complete": 3.9444389791664403,
-        "function": 3.6567569067146595,
-        "implementation": 3.9444389791664403
-      }
-    },
-    {
-      "task": "Batch process all image uploads with validation",
-      "agent": "kimi",
-      "tfidf": {
-        "batch": 4.349904087274605,
-        "process": 4.349904087274605,
-        "image": 4.349904087274605,
-        "uploads": 4.349904087274605,
-        "validation": 3.9444389791664403
-      }
-    },
-    {
-      "task": "From scratch: implement JWT authentication",
+      "task": "Build the caching layer module",
       "agent": "codex",
       "tfidf": {
-        "scratch": 3.9444389791664403,
-        "implement": 3.097141118779237,
-        "jwt": 4.349904087274605,
-        "authentication": 3.9444389791664403
+        "build": 3.1972245773362196,
+        "caching": 3.785011242238338,
+        "layer": 4.295836866004329,
+        "module": 3.315007612992603
       }
     },
     {
-      "task": "Analyze and fix performance across the stack",
+      "task": "Develop a caching layer with Redis integration",
+      "agent": "codex",
+      "tfidf": {
+        "develop": 4.701301974112493,
+        "caching": 3.785011242238338,
+        "layer": 4.295836866004329,
+        "redis": 4.295836866004329,
+        "integration": 4.701301974112493
+      }
+    },
+    {
+      "task": "Quick format this file and rename variables",
+      "agent": "copilot",
+      "tfidf": {
+        "quick": 3.315007612992603,
+        "format": 4.701301974112493,
+        "file": 4.295836866004329,
+        "rename": 4.295836866004329,
+        "variables": 4.701301974112493
+      }
+    },
+    {
+      "task": "Quickly build and deploy auth across 3 files",
       "agent": "kimi",
       "tfidf": {
-        "analyze": 3.9444389791664403,
-        "fix": 3.4336133554004498,
-        "performance": 4.349904087274605,
-        "across": 3.4336133554004498,
-        "stack": 4.349904087274605
+        "quickly": 4.701301974112493,
+        "build": 3.1972245773362196,
+        "deploy": 4.295836866004329,
+        "auth": 3.4485390056171252,
+        "across": 3.1972245773362196,
+        "files": 4.701301974112493
       }
     },
     {
       "task": "Implement a WebSocket chat server from this spec",
       "agent": "codex",
       "tfidf": {
-        "implement": 3.097141118779237,
-        "websocket": 4.349904087274605,
-        "chat": 4.349904087274605,
-        "server": 4.349904087274605,
-        "spec": 3.6567569067146595
+        "implement": 3.0918640616783932,
+        "websocket": 4.701301974112493,
+        "chat": 4.701301974112493,
+        "server": 4.295836866004329,
+        "spec": 4.008154793552548
+      }
+    },
+    {
+      "task": "Build authentication module from scratch",
+      "agent": "codex",
+      "tfidf": {
+        "build": 3.1972245773362196,
+        "authentication": 4.008154793552548,
+        "module": 3.315007612992603,
+        "scratch": 3.785011242238338
+      }
+    },
+    {
+      "task": "Automate the deployment pipeline with GitHub Actions",
+      "agent": "kimi",
+      "tfidf": {
+        "automate": 4.701301974112493,
+        "deployment": 4.701301974112493,
+        "pipeline": 4.701301974112493,
+        "github": 4.701301974112493,
+        "actions": 4.701301974112493
+      }
+    },
+    {
+      "task": "Quick payment validation fix",
+      "agent": "copilot",
+      "tfidf": {
+        "quick": 3.315007612992603,
+        "payment": 3.6026896854443837,
+        "validation": 4.008154793552548,
+        "fix": 3.315007612992603
+      }
+    },
+    {
+      "task": "Quick auth fix: rename the token variable",
+      "agent": "copilot",
+      "tfidf": {
+        "quick": 3.315007612992603,
+        "auth": 3.4485390056171252,
+        "fix": 3.315007612992603,
+        "rename": 4.295836866004329,
+        "token": 4.701301974112493,
+        "variable": 4.701301974112493
+      }
+    },
+    {
+      "task": "Implement authentication across 5 microservices",
+      "agent": "kimi",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "authentication": 4.008154793552548,
+        "across": 3.1972245773362196,
+        "microservices": 4.295836866004329
+      }
+    },
+    {
+      "task": "Build a complete user dashboard from scratch",
+      "agent": "codex",
+      "tfidf": {
+        "build": 3.1972245773362196,
+        "complete": 4.295836866004329,
+        "user": 3.4485390056171252,
+        "dashboard": 4.701301974112493,
+        "scratch": 3.785011242238338
+      }
+    },
+    {
+      "task": "Implement the core business logic module",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "core": 4.701301974112493,
+        "business": 4.701301974112493,
+        "logic": 4.295836866004329,
+        "module": 3.315007612992603
+      }
+    },
+    {
+      "task": "Research auth patterns then build the implementation",
+      "agent": "kimi",
+      "tfidf": {
+        "research": 3.4485390056171252,
+        "auth": 3.4485390056171252,
+        "patterns": 4.295836866004329,
+        "then": 4.295836866004329,
+        "build": 3.1972245773362196,
+        "implementation": 4.008154793552548
+      }
+    },
+    {
+      "task": "Mock the API responses for testing",
+      "agent": "ollama",
+      "tfidf": {
+        "mock": 4.295836866004329,
+        "api": 3.6026896854443837,
+        "responses": 4.701301974112493,
+        "testing": 4.295836866004329
+      }
+    },
+    {
+      "task": "Generate ideas for the landing page copy",
+      "agent": "ollama",
+      "tfidf": {
+        "generate": 4.701301974112493,
+        "ideas": 4.008154793552548,
+        "landing": 4.701301974112493,
+        "page": 4.701301974112493,
+        "copy": 4.701301974112493
+      }
+    },
+    {
+      "task": "Configure caching infrastructure across regions",
+      "agent": "kimi",
+      "tfidf": {
+        "configure": 4.295836866004329,
+        "caching": 3.785011242238338,
+        "infrastructure": 4.701301974112493,
+        "across": 3.1972245773362196,
+        "regions": 4.701301974112493
+      }
+    },
+    {
+      "task": "Create the payment service module",
+      "agent": "codex",
+      "tfidf": {
+        "create": 3.6026896854443837,
+        "payment": 3.6026896854443837,
+        "service": 4.008154793552548,
+        "module": 3.315007612992603
+      }
+    },
+    {
+      "task": "Small change: fix the typo in the error message",
+      "agent": "copilot",
+      "tfidf": {
+        "small": 4.701301974112493,
+        "change": 4.701301974112493,
+        "fix": 3.315007612992603,
+        "typo": 4.701301974112493,
+        "error": 4.701301974112493,
+        "message": 4.701301974112493
+      }
+    },
+    {
+      "task": "Review this React component for bugs",
+      "agent": "copilot",
+      "tfidf": {
+        "review": 3.6026896854443837,
+        "react": 4.295836866004329,
+        "component": 4.295836866004329,
+        "bugs": 4.295836866004329
+      }
+    },
+    {
+      "task": "Analyze the security vulnerabilities in auth flow",
+      "agent": "claude",
+      "tfidf": {
+        "analyze": 4.295836866004329,
+        "security": 4.295836866004329,
+        "vulnerabilities": 4.701301974112493,
+        "auth": 3.4485390056171252,
+        "flow": 3.6026896854443837
+      }
+    },
+    {
+      "task": "Complete this function implementation",
+      "agent": "copilot",
+      "tfidf": {
+        "complete": 4.295836866004329,
+        "function": 3.785011242238338,
+        "implementation": 4.008154793552548
+      }
+    },
+    {
+      "task": "Implement user management module",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "user": 3.4485390056171252,
+        "management": 4.295836866004329,
+        "module": 3.315007612992603
+      }
+    },
+    {
+      "task": "Sketch payment flow ideas",
+      "agent": "ollama",
+      "tfidf": {
+        "sketch": 4.295836866004329,
+        "payment": 3.6026896854443837,
+        "flow": 3.6026896854443837,
+        "ideas": 4.008154793552548
+      }
+    },
+    {
+      "task": "Rough draft of the data models",
+      "agent": "ollama",
+      "tfidf": {
+        "rough": 4.701301974112493,
+        "draft": 3.4485390056171252,
+        "data": 4.295836866004329,
+        "models": 4.701301974112493
+      }
+    },
+    {
+      "task": "Document notification architecture decisions",
+      "agent": "claude",
+      "tfidf": {
+        "document": 4.008154793552548,
+        "notification": 3.785011242238338,
+        "architecture": 4.008154793552548,
+        "decisions": 4.295836866004329
+      }
+    },
+    {
+      "task": "Deep dive into OAuth2 spec and best practices",
+      "agent": "claude",
+      "tfidf": {
+        "deep": 4.295836866004329,
+        "dive": 4.701301974112493,
+        "oauth": 4.295836866004329,
+        "spec": 4.008154793552548,
+        "best": 4.295836866004329,
+        "practices": 4.295836866004329
+      }
+    },
+    {
+      "task": "Deploy search across all environments",
+      "agent": "kimi",
+      "tfidf": {
+        "deploy": 4.295836866004329,
+        "search": 4.008154793552548,
+        "across": 3.1972245773362196,
+        "environments": 4.701301974112493
+      }
+    },
+    {
+      "task": "Suggest improvements for this code snippet",
+      "agent": "copilot",
+      "tfidf": {
+        "suggest": 4.701301974112493,
+        "improvements": 4.295836866004329,
+        "code": 4.701301974112493,
+        "snippet": 4.701301974112493
+      }
+    },
+    {
+      "task": "Implement rate limiting middleware for Express",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "rate": 4.701301974112493,
+        "limiting": 4.701301974112493,
+        "middleware": 4.701301974112493,
+        "express": 4.295836866004329
+      }
+    },
+    {
+      "task": "Boilerplate for the Express server",
+      "agent": "ollama",
+      "tfidf": {
+        "boilerplate": 4.701301974112493,
+        "express": 4.295836866004329,
+        "server": 4.295836866004329
+      }
+    },
+    {
+      "task": "Create a comprehensive architecture RFC",
+      "agent": "claude",
+      "tfidf": {
+        "create": 3.6026896854443837,
+        "comprehensive": 4.701301974112493,
+        "architecture": 4.008154793552548,
+        "rfc": 4.701301974112493
+      }
+    },
+    {
+      "task": "From scratch: implement JWT authentication",
+      "agent": "codex",
+      "tfidf": {
+        "scratch": 3.785011242238338,
+        "implement": 3.0918640616783932,
+        "jwt": 4.701301974112493,
+        "authentication": 4.008154793552548
+      }
+    },
+    {
+      "task": "Draft the auth flow specification for review",
+      "agent": "ollama",
+      "tfidf": {
+        "draft": 3.4485390056171252,
+        "auth": 3.4485390056171252,
+        "flow": 3.6026896854443837,
+        "specification": 4.701301974112493,
+        "review": 3.6026896854443837
+      }
+    },
+    {
+      "task": "Offline draft: write the README outline",
+      "agent": "ollama",
+      "tfidf": {
+        "offline": 4.701301974112493,
+        "draft": 3.4485390056171252,
+        "write": 4.701301974112493,
+        "readme": 4.701301974112493,
+        "outline": 4.701301974112493
+      }
+    },
+    {
+      "task": "Research GDPR compliance for user data",
+      "agent": "claude",
+      "tfidf": {
+        "research": 3.4485390056171252,
+        "gdpr": 4.701301974112493,
+        "compliance": 4.008154793552548,
+        "user": 3.4485390056171252,
+        "data": 4.295836866004329
+      }
+    },
+    {
+      "task": "Draft a quick prototype API with tests",
+      "agent": "kimi",
+      "tfidf": {
+        "draft": 3.4485390056171252,
+        "quick": 3.315007612992603,
+        "prototype": 4.008154793552548,
+        "api": 3.6026896854443837,
+        "tests": 4.008154793552548
+      }
+    },
+    {
+      "task": "Mock notification templates for testing",
+      "agent": "ollama",
+      "tfidf": {
+        "mock": 4.295836866004329,
+        "notification": 3.785011242238338,
+        "templates": 4.701301974112493,
+        "testing": 4.295836866004329
+      }
+    },
+    {
+      "task": "Fix bugs in the frontend, backend, and database",
+      "agent": "kimi",
+      "tfidf": {
+        "fix": 3.315007612992603,
+        "bugs": 4.295836866004329,
+        "frontend": 4.295836866004329,
+        "backend": 4.295836866004329,
+        "database": 3.6026896854443837
+      }
+    },
+    {
+      "task": "Extract this logic into a separate function",
+      "agent": "copilot",
+      "tfidf": {
+        "extract": 4.295836866004329,
+        "logic": 4.295836866004329,
+        "separate": 4.701301974112493,
+        "function": 3.785011242238338
+      }
+    },
+    {
+      "task": "Compare GraphQL vs REST for our use case",
+      "agent": "claude",
+      "tfidf": {
+        "compare": 4.701301974112493,
+        "graphql": 4.701301974112493,
+        "vs": 4.008154793552548,
+        "rest": 4.295836866004329,
+        "our": 4.008154793552548,
+        "use": 4.008154793552548,
+        "case": 4.295836866004329
+      }
+    },
+    {
+      "task": "Clean up this function - it's too long",
+      "agent": "copilot",
+      "tfidf": {
+        "clean": 4.701301974112493,
+        "up": 4.295836866004329,
+        "function": 3.785011242238338,
+        "long": 4.701301974112493
+      }
+    },
+    {
+      "task": "Draft a quick API spec to review",
+      "agent": "ollama",
+      "tfidf": {
+        "draft": 3.4485390056171252,
+        "quick": 3.315007612992603,
+        "api": 3.6026896854443837,
+        "spec": 4.008154793552548,
+        "review": 3.6026896854443837
+      }
+    },
+    {
+      "task": "Configure Kubernetes for auto-scaling",
+      "agent": "kimi",
+      "tfidf": {
+        "configure": 4.295836866004329,
+        "kubernetes": 4.701301974112493,
+        "auto": 4.701301974112493,
+        "scaling": 4.701301974112493
+      }
+    },
+    {
+      "task": "Document the security audit findings",
+      "agent": "claude",
+      "tfidf": {
+        "document": 4.008154793552548,
+        "security": 4.295836866004329,
+        "audit": 4.701301974112493,
+        "findings": 4.701301974112493
+      }
+    },
+    {
+      "task": "End-to-end feature: user registration system",
+      "agent": "codex",
+      "tfidf": {
+        "end": 4.701301974112493,
+        "feature": 2.1479184330021646,
+        "user": 1.7242695028085626,
+        "registration": 2.3506509870562464,
+        "system": 2.3506509870562464
+      }
+    },
+    {
+      "task": "Autonomous implementation of the payment flow",
+      "agent": "codex",
+      "tfidf": {
+        "autonomous": 4.701301974112493,
+        "implementation": 4.008154793552548,
+        "payment": 3.6026896854443837,
+        "flow": 3.6026896854443837
+      }
+    },
+    {
+      "task": "Build a file upload service with validation",
+      "agent": "codex",
+      "tfidf": {
+        "build": 3.1972245773362196,
+        "file": 4.295836866004329,
+        "upload": 4.701301974112493,
+        "service": 4.008154793552548,
+        "validation": 4.008154793552548
+      }
+    },
+    {
+      "task": "Inline hint: how do I use this hook?",
+      "agent": "copilot",
+      "tfidf": {
+        "inline": 4.701301974112493,
+        "hint": 4.701301974112493,
+        "how": 4.701301974112493,
+        "use": 4.008154793552548,
+        "hook": 4.701301974112493
+      }
+    },
+    {
+      "task": "Extract user validation into helper function",
+      "agent": "copilot",
+      "tfidf": {
+        "extract": 4.295836866004329,
+        "user": 3.4485390056171252,
+        "validation": 4.008154793552548,
+        "helper": 4.701301974112493,
+        "function": 3.785011242238338
+      }
+    },
+    {
+      "task": "Template for the new React component",
+      "agent": "ollama",
+      "tfidf": {
+        "template": 4.701301974112493,
+        "new": 4.295836866004329,
+        "react": 4.295836866004329,
+        "component": 4.295836866004329
       }
     },
     {
       "task": "Create a CLI tool that converts markdown to HTML",
       "agent": "codex",
       "tfidf": {
-        "create": 3.4336133554004498,
-        "cli": 4.349904087274605,
-        "tool": 4.349904087274605,
-        "converts": 4.349904087274605,
-        "markdown": 4.349904087274605,
-        "html": 4.349904087274605
+        "create": 3.6026896854443837,
+        "cli": 4.701301974112493,
+        "tool": 4.701301974112493,
+        "converts": 4.701301974112493,
+        "markdown": 4.701301974112493,
+        "html": 4.701301974112493
+      }
+    },
+    {
+      "task": "Research best practices then implement them",
+      "agent": "kimi",
+      "tfidf": {
+        "research": 3.4485390056171252,
+        "best": 4.295836866004329,
+        "practices": 4.295836866004329,
+        "then": 4.295836866004329,
+        "implement": 3.0918640616783932,
+        "them": 4.701301974112493
+      }
+    },
+    {
+      "task": "Create shell scripts for database backups",
+      "agent": "kimi",
+      "tfidf": {
+        "create": 3.6026896854443837,
+        "shell": 4.701301974112493,
+        "scripts": 4.701301974112493,
+        "database": 3.6026896854443837,
+        "backups": 4.701301974112493
+      }
+    },
+    {
+      "task": "Type definition for this object",
+      "agent": "copilot",
+      "tfidf": {
+        "type": 4.295836866004329,
+        "definition": 4.701301974112493,
+        "object": 4.701301974112493
+      }
+    },
+    {
+      "task": "Analyze and fix performance across the stack",
+      "agent": "kimi",
+      "tfidf": {
+        "analyze": 4.295836866004329,
+        "fix": 3.315007612992603,
+        "performance": 4.701301974112493,
+        "across": 3.1972245773362196,
+        "stack": 4.701301974112493
+      }
+    },
+    {
+      "task": "Deep research into compliance requirements",
+      "agent": "claude",
+      "tfidf": {
+        "deep": 4.295836866004329,
+        "research": 3.4485390056171252,
+        "compliance": 4.008154793552548,
+        "requirements": 4.295836866004329
+      }
+    },
+    {
+      "task": "Document the API architecture and design decisions",
+      "agent": "claude",
+      "tfidf": {
+        "document": 4.008154793552548,
+        "api": 3.6026896854443837,
+        "architecture": 4.008154793552548,
+        "design": 4.701301974112493,
+        "decisions": 4.295836866004329
+      }
+    },
+    {
+      "task": "Focused module: build the notification service",
+      "agent": "codex",
+      "tfidf": {
+        "focused": 4.701301974112493,
+        "module": 3.315007612992603,
+        "build": 3.1972245773362196,
+        "notification": 3.785011242238338,
+        "service": 4.008154793552548
+      }
+    },
+    {
+      "task": "Evaluate database options: Postgres vs MySQL vs Mongo",
+      "agent": "claude",
+      "tfidf": {
+        "evaluate": 2.1479184330021646,
+        "database": 1.8013448427221919,
+        "options": 2.3506509870562464,
+        "postgres": 2.3506509870562464,
+        "vs": 4.008154793552548,
+        "mysql": 2.3506509870562464,
+        "mongo": 2.3506509870562464
+      }
+    },
+    {
+      "task": "Implement OAuth2 flow from scratch with tests",
+      "agent": "codex",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "oauth": 4.295836866004329,
+        "flow": 3.6026896854443837,
+        "scratch": 3.785011242238338,
+        "tests": 4.008154793552548
+      }
+    },
+    {
+      "task": "Create a database migration script for PostgreSQL",
+      "agent": "codex",
+      "tfidf": {
+        "create": 3.6026896854443837,
+        "database": 3.6026896854443837,
+        "migration": 4.701301974112493,
+        "script": 4.701301974112493,
+        "postgresql": 4.701301974112493
+      }
+    },
+    {
+      "task": "Strategy for handling high traffic spikes",
+      "agent": "claude",
+      "tfidf": {
+        "strategy": 4.701301974112493,
+        "handling": 4.701301974112493,
+        "high": 4.701301974112493,
+        "traffic": 4.701301974112493,
+        "spikes": 4.701301974112493
+      }
+    },
+    {
+      "task": "Add notifications to web, mobile, and email",
+      "agent": "kimi",
+      "tfidf": {
+        "add": 4.701301974112493,
+        "notifications": 4.701301974112493,
+        "web": 4.701301974112493,
+        "mobile": 4.295836866004329,
+        "email": 4.701301974112493
+      }
+    },
+    {
+      "task": "Run tests and fix failures across all modules",
+      "agent": "kimi",
+      "tfidf": {
+        "run": 4.701301974112493,
+        "tests": 4.008154793552548,
+        "fix": 3.315007612992603,
+        "failures": 4.701301974112493,
+        "across": 3.1972245773362196,
+        "modules": 4.701301974112493
+      }
+    },
+    {
+      "task": "Research PCI compliance requirements",
+      "agent": "claude",
+      "tfidf": {
+        "research": 3.4485390056171252,
+        "pci": 4.701301974112493,
+        "compliance": 4.008154793552548,
+        "requirements": 4.295836866004329
+      }
+    },
+    {
+      "task": "Fast prototype of the UI concept",
+      "agent": "ollama",
+      "tfidf": {
+        "fast": 4.701301974112493,
+        "prototype": 4.008154793552548,
+        "ui": 4.701301974112493,
+        "concept": 4.701301974112493
+      }
+    },
+    {
+      "task": "Draft search UX concepts",
+      "agent": "ollama",
+      "tfidf": {
+        "draft": 3.4485390056171252,
+        "search": 4.008154793552548,
+        "ux": 4.701301974112493,
+        "concepts": 4.701301974112493
+      }
+    },
+    {
+      "task": "Research microservices patterns for our scale",
+      "agent": "claude",
+      "tfidf": {
+        "research": 3.4485390056171252,
+        "microservices": 4.295836866004329,
+        "patterns": 4.295836866004329,
+        "our": 4.008154793552548,
+        "scale": 4.701301974112493
+      }
+    },
+    {
+      "task": "Build a REST API for user management with full CRUD",
+      "agent": "codex",
+      "tfidf": {
+        "build": 3.1972245773362196,
+        "rest": 4.295836866004329,
+        "api": 3.6026896854443837,
+        "user": 3.4485390056171252,
+        "management": 4.295836866004329,
+        "full": 4.701301974112493,
+        "crud": 4.701301974112493
+      }
+    },
+    {
+      "task": "Prototype caching strategies locally",
+      "agent": "ollama",
+      "tfidf": {
+        "prototype": 4.008154793552548,
+        "caching": 3.785011242238338,
+        "strategies": 4.701301974112493,
+        "locally": 4.701301974112493
+      }
+    },
+    {
+      "task": "Set up the entire development environment",
+      "agent": "kimi",
+      "tfidf": {
+        "set": 4.701301974112493,
+        "up": 4.295836866004329,
+        "entire": 4.701301974112493,
+        "development": 4.701301974112493,
+        "environment": 4.701301974112493
+      }
+    },
+    {
+      "task": "Evaluate Redis vs Memcached for our use case",
+      "agent": "claude",
+      "tfidf": {
+        "evaluate": 4.295836866004329,
+        "redis": 4.295836866004329,
+        "vs": 4.008154793552548,
+        "memcached": 4.701301974112493,
+        "our": 4.008154793552548,
+        "use": 4.008154793552548,
+        "case": 4.295836866004329
+      }
+    },
+    {
+      "task": "Review and refactor this single module deeply",
+      "agent": "codex",
+      "tfidf": {
+        "review": 3.6026896854443837,
+        "refactor": 4.701301974112493,
+        "single": 4.701301974112493,
+        "module": 3.315007612992603,
+        "deeply": 4.701301974112493
+      }
+    },
+    {
+      "task": "Quick search query optimization",
+      "agent": "copilot",
+      "tfidf": {
+        "quick": 3.315007612992603,
+        "search": 4.008154793552548,
+        "query": 4.701301974112493,
+        "optimization": 4.701301974112493
+      }
+    },
+    {
+      "task": "Review the codebase for architectural improvements",
+      "agent": "claude",
+      "tfidf": {
+        "review": 3.6026896854443837,
+        "codebase": 4.701301974112493,
+        "architectural": 4.701301974112493,
+        "improvements": 4.295836866004329
+      }
+    },
+    {
+      "task": "Implement auth across frontend, backend, and mobile",
+      "agent": "kimi",
+      "tfidf": {
+        "implement": 3.0918640616783932,
+        "auth": 3.4485390056171252,
+        "across": 3.1972245773362196,
+        "frontend": 4.295836866004329,
+        "backend": 4.295836866004329,
+        "mobile": 4.295836866004329
+      }
+    },
+    {
+      "task": "Quick notification type fix",
+      "agent": "copilot",
+      "tfidf": {
+        "quick": 3.315007612992603,
+        "notification": 3.785011242238338,
+        "type": 4.295836866004329,
+        "fix": 3.315007612992603
+      }
+    },
+    {
+      "task": "Integrate payment processing across all services",
+      "agent": "kimi",
+      "tfidf": {
+        "integrate": 4.701301974112493,
+        "payment": 3.6026896854443837,
+        "processing": 4.701301974112493,
+        "across": 3.1972245773362196,
+        "services": 4.701301974112493
       }
     }
   ]

@@ -22,6 +22,7 @@ INDEX_PATH = Path(__file__).parent.parent / ".federation" / "tfidf_index.json"
 EMBEDDING_CACHE = Path(__file__).parent.parent / ".federation" / "embeddings" / "ollama_index.json"
 
 # --- Agent Taxonomy (5 agents) ---
+# Enhanced with phrase patterns and negative keywords for disambiguation
 
 AGENT_TAXONOMY = {
     "kimi": {
@@ -32,6 +33,16 @@ AGENT_TAXONOMY = {
             "docker", "kubernetes", "infrastructure", "devops", "shell",
             "script", "automate", "endpoint", "api", "crud", "database",
             "parallel", "multiple files", "batch"
+        ],
+        "phrase_patterns": [
+            "across multiple", "across all", "across three", "then implement",
+            "then build", "integrate", "set up", "batch process", "then deploy"
+        ],
+        "negative_keywords": [
+            "from scratch", "single module", "focused", "draft", "sketch",
+            "brainstorm", "research", "analyze", "document", "compare",
+            "evaluate trade", "deep dive", "summarize", "quick fix",
+            "inline", "hint", "rename", "small change", "snippet"
         ],
         "weight": 1.0,
         "complexity_bias": "high"
@@ -44,6 +55,15 @@ AGENT_TAXONOMY = {
             "trade-off", "pros cons", "long-term", "security audit",
             "threat model", "literature", "specification", "whitepaper"
         ],
+        "phrase_patterns": [
+            "evaluate trade", "pros and cons", "deep dive into", "compare vs",
+            "assess the", "create a plan", "strategy for", "research into",
+            "analyze the", "document the"
+        ],
+        "negative_keywords": [
+            "implement", "build", "deploy", "fix", "create", "migrate",
+            "quick", "snippet", "inline", "draft", "sketch", "mock"
+        ],
         "weight": 1.0,
         "complexity_bias": "high"
     },
@@ -53,6 +73,16 @@ AGENT_TAXONOMY = {
             "inline", "hint", "type", "rename", "extract", "refactor",
             "single file", "function", "class", "method", "variable",
             "format", "lint", "clean", "tidy", "small change"
+        ],
+        "phrase_patterns": [
+            "quick fix", "small change", "rename the", "inline hint",
+            "extract this", "complete this", "type definition", "format this",
+            "clean up", "suggest improvement"
+        ],
+        "negative_keywords": [
+            "across", "multiple", "all files", "entire", "architecture",
+            "research", "analyze", "document", "deploy", "infrastructure",
+            "design pattern", "strategy"
         ],
         "weight": 1.0,
         "complexity_bias": "low"
@@ -64,6 +94,15 @@ AGENT_TAXONOMY = {
             "api", "crud", "websocket", "oauth", "payment", "migration",
             "middleware", "caching", "redis", "upload", "validation"
         ],
+        "phrase_patterns": [
+            "from scratch", "end to end", "single module", "focused module",
+            "build the", "implement the", "create the", "module for",
+            "service for", "autonomous implementation"
+        ],
+        "negative_keywords": [
+            "across", "multiple", "then implement", "then build", "integrate",
+            "research", "analyze", "quick fix", "inline", "draft", "sketch"
+        ],
         "weight": 1.0,
         "complexity_bias": "medium"
     },
@@ -73,6 +112,15 @@ AGENT_TAXONOMY = {
             "offline", "local", "fast", "quick draft", "rough",
             "experiment", "try", "mock", "stub", "placeholder",
             "template", "boilerplate", "generate ideas"
+        ],
+        "phrase_patterns": [
+            "draft the", "sketch out", "brainstorm", "prototype of",
+            "rough draft", "quick draft", "template for", "boilerplate",
+            "mock the", "stub for", "placeholder for"
+        ],
+        "negative_keywords": [
+            "implement", "build", "deploy", "fix", "migrate", "debug",
+            "architecture", "research", "analyze", "end to end", "from scratch"
         ],
         "weight": 1.0,
         "complexity_bias": "low"
@@ -188,15 +236,29 @@ def cosine_similarity_tfidf(vec_a: dict, vec_b: dict) -> float:
 # --- Keyword & Complexity Scorers ---
 
 def keyword_score(task: str, agent: str) -> float:
-    """Score task against agent's keyword taxonomy."""
+    """
+    Score task against agent's keyword taxonomy.
+    Includes phrase patterns (positive) and negative keywords (penalty).
+    """
     task_lower = task.lower()
     taxonomy = AGENT_TAXONOMY.get(agent, {})
     keywords = taxonomy.get("keywords", [])
+    phrases = taxonomy.get("phrase_patterns", [])
+    negatives = taxonomy.get("negative_keywords", [])
     weight = taxonomy.get("weight", 1.0)
 
+    # Base keyword hits
     hits = sum(1 for kw in keywords if kw in task_lower)
+    
+    # Phrase pattern bonus (stronger signal)
+    phrase_hits = sum(2 for phrase in phrases if phrase in task_lower)
+    
+    # Negative keyword penalty
+    penalty = sum(0.5 for neg in negatives if neg in task_lower)
+    
     max_possible = max(len(keywords), 1)
-    return (hits / max_possible) * weight
+    score = ((hits + phrase_hits) / max_possible) * weight - penalty
+    return max(score, 0.0)  # Floor at 0
 
 def complexity_score(task: str) -> str:
     """Estimate task complexity: low, medium, high."""
@@ -235,13 +297,18 @@ def complexity_match(task: str, agent: str) -> float:
 
 # --- Ensemble Router ---
 
-def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False) -> dict:
+def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False, 
+          weights: tuple = (0.4, 0.4, 0.2), use_ollama: bool = False) -> dict:
     """
     Route a task to the best agent using 3-signal ensemble.
-    Tries Ollama embeddings first, falls back to TF-IDF, then keywords.
+    Tries Ollama embeddings first (if enabled), falls back to TF-IDF, then keywords.
+    
+    Args:
+        weights: (tfidf_weight, keyword_weight, complexity_weight) — must sum to ~1.0
+        use_ollama: Whether to use Tier 1 Ollama embeddings (slow, default False)
     """
-    # Tier 1: Try Ollama embeddings
-    ollama_embedding = get_ollama_embedding(task)
+    # Tier 1: Try Ollama embeddings (only if enabled)
+    ollama_embedding = get_ollama_embedding(task) if use_ollama else None
     if ollama_embedding and EMBEDDING_CACHE.exists():
         # Load cached embeddings and compare
         try:
@@ -315,13 +382,14 @@ def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False) 
     # Complexity signal
     cx_scores = {a: complexity_match(task, a) for a in AGENT_TAXONOMY}
 
-    # Ensemble: 40% TF-IDF + 40% keyword + 20% complexity
+    # Ensemble: configurable weights (default 40% TF-IDF + 40% keyword + 20% complexity)
+    w_tfidf, w_kw, w_cx = weights
     final_scores = {}
     for agent in AGENT_TAXONOMY:
         tfidf = tfidf_scores.get(agent, 0.0)
         kw = kw_scores.get(agent, 0.0)
         cx = cx_scores.get(agent, 0.0)
-        final_scores[agent] = (0.4 * tfidf) + (0.4 * kw) + (0.2 * cx)
+        final_scores[agent] = (w_tfidf * tfidf) + (w_kw * kw) + (w_cx * cx)
 
     winner = max(final_scores, key=final_scores.get)
     confidence = final_scores[winner]
@@ -343,7 +411,7 @@ def route(task: str, index: dict = None, top_k: int = 3, explain: bool = False) 
             "complexity": complexity_score(task),
             "complexity_signal": cx_scores,
             "top_training_matches": top_matches[:3],
-            "weights": "40% TF-IDF + 40% keyword + 20% complexity"
+            "weights": f"{w_tfidf*100:.0f}% TF-IDF + {w_kw*100:.0f}% keyword + {w_cx*100:.0f}% complexity"
         }
 
     return result

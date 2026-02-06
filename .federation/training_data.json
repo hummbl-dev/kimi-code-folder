@@ -1,78 +1,402 @@
 [
-  {"task": "Build a REST API for user management with full CRUD", "agent": "codex"},
-  {"task": "Implement a WebSocket chat server from this spec", "agent": "codex"},
-  {"task": "Create a CLI tool that converts markdown to HTML", "agent": "codex"},
-  {"task": "Fix the race condition bug in the connection pool", "agent": "codex"},
-  {"task": "Build the payment processing module end to end", "agent": "codex"},
-  {"task": "Implement OAuth2 flow from scratch with tests", "agent": "codex"},
-  {"task": "Create a database migration script for PostgreSQL", "agent": "codex"},
-  {"task": "Build a file upload service with validation", "agent": "codex"},
-  {"task": "Implement rate limiting middleware for Express", "agent": "codex"},
-  {"task": "Develop a caching layer with Redis integration", "agent": "codex"},
-  
-  {"task": "Implement authentication across 5 microservices", "agent": "kimi"},
-  {"task": "Deploy the new API to production with CI/CD", "agent": "kimi"},
-  {"task": "Fix bugs in the frontend, backend, and database", "agent": "kimi"},
-  {"task": "Refactor the entire codebase to use TypeScript", "agent": "kimi"},
-  {"task": "Set up Docker containers for all services", "agent": "kimi"},
-  {"task": "Automate the deployment pipeline with GitHub Actions", "agent": "kimi"},
-  {"task": "Create shell scripts for database backups", "agent": "kimi"},
-  {"task": "Migrate from MongoDB to PostgreSQL", "agent": "kimi"},
-  {"task": "Configure Kubernetes for auto-scaling", "agent": "kimi"},
-  {"task": "Run tests and fix failures across all modules", "agent": "kimi"},
-  
-  {"task": "Research microservices patterns for our scale", "agent": "claude"},
-  {"task": "Analyze the security vulnerabilities in auth flow", "agent": "claude"},
-  {"task": "Document the API architecture and design decisions", "agent": "claude"},
-  {"task": "Compare GraphQL vs REST for our use case", "agent": "claude"},
-  {"task": "Evaluate database options: Postgres vs MySQL vs Mongo", "agent": "claude"},
-  {"task": "Review the codebase for architectural improvements", "agent": "claude"},
-  {"task": "Deep dive into OAuth2 spec and best practices", "agent": "claude"},
-  {"task": "Summarize the trade-offs for different caching strategies", "agent": "claude"},
-  {"task": "Assess the technical debt and create a plan", "agent": "claude"},
-  {"task": "Plan the migration from monolith to microservices", "agent": "claude"},
-  
-  {"task": "Review this React component for bugs", "agent": "copilot"},
-  {"task": "Quickly rename this variable to be more descriptive", "agent": "copilot"},
-  {"task": "Complete this function implementation", "agent": "copilot"},
-  {"task": "Suggest improvements for this code snippet", "agent": "copilot"},
-  {"task": "Inline hint: how do I use this hook?", "agent": "copilot"},
-  {"task": "Format and lint this file", "agent": "copilot"},
-  {"task": "Extract this logic into a separate function", "agent": "copilot"},
-  {"task": "Small change: fix the typo in the error message", "agent": "copilot"},
-  {"task": "Type definition for this object", "agent": "copilot"},
-  {"task": "Clean up this function - it's too long", "agent": "copilot"},
-  
-  {"task": "Draft a quick API spec to review", "agent": "ollama"},
-  {"task": "Sketch out the database schema ideas", "agent": "ollama"},
-  {"task": "Brainstorm feature names for the new product", "agent": "ollama"},
-  {"task": "Fast prototype of the UI concept", "agent": "ollama"},
-  {"task": "Offline draft: write the README outline", "agent": "ollama"},
-  {"task": "Mock the API responses for testing", "agent": "ollama"},
-  {"task": "Template for the new React component", "agent": "ollama"},
-  {"task": "Boilerplate for the Express server", "agent": "ollama"},
-  {"task": "Generate ideas for the landing page copy", "agent": "ollama"},
-  {"task": "Rough draft of the data models", "agent": "ollama"},
-  
-  {"task": "Quickly build and deploy auth across 3 files", "agent": "kimi"},
-  {"task": "Research best practices then implement them", "agent": "kimi"},
-  {"task": "Draft a quick prototype API with tests", "agent": "kimi"},
-  {"task": "Review and refactor this single module deeply", "agent": "codex"},
-  {"task": "Fix the bug, document the root cause, and update the wiki", "agent": "kimi"},
-  {"task": "Build a complete user dashboard from scratch", "agent": "codex"},
-  {"task": "Implement the core business logic module", "agent": "codex"},
-  {"task": "Set up the entire development environment", "agent": "kimi"},
-  {"task": "Analyze and fix performance across the stack", "agent": "kimi"},
-  {"task": "Create a comprehensive architecture RFC", "agent": "claude"},
-  
-  {"task": "Autonomous implementation of the payment flow", "agent": "codex"},
-  {"task": "End-to-end feature: user registration system", "agent": "codex"},
-  {"task": "Focused module: build the notification service", "agent": "codex"},
-  {"task": "From scratch: implement JWT authentication", "agent": "codex"},
-  {"task": "Single module deep dive: optimize the search indexer", "agent": "codex"},
-  {"task": "Quick format this file and rename variables", "agent": "copilot"},
-  {"task": "Document the security audit findings", "agent": "claude"},
-  {"task": "Strategy for handling high traffic spikes", "agent": "claude"},
-  {"task": "Deep research into compliance requirements", "agent": "claude"},
-  {"task": "Batch process all image uploads with validation", "agent": "kimi"}
+  {
+    "task": "Build a REST API for user management with full CRUD",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement a WebSocket chat server from this spec",
+    "agent": "codex"
+  },
+  {
+    "task": "Create a CLI tool that converts markdown to HTML",
+    "agent": "codex"
+  },
+  {
+    "task": "Fix the race condition bug in the connection pool",
+    "agent": "codex"
+  },
+  {
+    "task": "Build the payment processing module end to end",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement OAuth2 flow from scratch with tests",
+    "agent": "codex"
+  },
+  {
+    "task": "Create a database migration script for PostgreSQL",
+    "agent": "codex"
+  },
+  {
+    "task": "Build a file upload service with validation",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement rate limiting middleware for Express",
+    "agent": "codex"
+  },
+  {
+    "task": "Develop a caching layer with Redis integration",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement authentication across 5 microservices",
+    "agent": "kimi"
+  },
+  {
+    "task": "Deploy the new API to production with CI/CD",
+    "agent": "kimi"
+  },
+  {
+    "task": "Fix bugs in the frontend, backend, and database",
+    "agent": "kimi"
+  },
+  {
+    "task": "Refactor the entire codebase to use TypeScript",
+    "agent": "kimi"
+  },
+  {
+    "task": "Set up Docker containers for all services",
+    "agent": "kimi"
+  },
+  {
+    "task": "Automate the deployment pipeline with GitHub Actions",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create shell scripts for database backups",
+    "agent": "kimi"
+  },
+  {
+    "task": "Migrate from MongoDB to PostgreSQL",
+    "agent": "kimi"
+  },
+  {
+    "task": "Configure Kubernetes for auto-scaling",
+    "agent": "kimi"
+  },
+  {
+    "task": "Run tests and fix failures across all modules",
+    "agent": "kimi"
+  },
+  {
+    "task": "Research microservices patterns for our scale",
+    "agent": "claude"
+  },
+  {
+    "task": "Analyze the security vulnerabilities in auth flow",
+    "agent": "claude"
+  },
+  {
+    "task": "Document the API architecture and design decisions",
+    "agent": "claude"
+  },
+  {
+    "task": "Compare GraphQL vs REST for our use case",
+    "agent": "claude"
+  },
+  {
+    "task": "Evaluate database options: Postgres vs MySQL vs Mongo",
+    "agent": "claude"
+  },
+  {
+    "task": "Review the codebase for architectural improvements",
+    "agent": "claude"
+  },
+  {
+    "task": "Deep dive into OAuth2 spec and best practices",
+    "agent": "claude"
+  },
+  {
+    "task": "Summarize the trade-offs for different caching strategies",
+    "agent": "claude"
+  },
+  {
+    "task": "Assess the technical debt and create a plan",
+    "agent": "claude"
+  },
+  {
+    "task": "Plan the migration from monolith to microservices",
+    "agent": "claude"
+  },
+  {
+    "task": "Review this React component for bugs",
+    "agent": "copilot"
+  },
+  {
+    "task": "Quickly rename this variable to be more descriptive",
+    "agent": "copilot"
+  },
+  {
+    "task": "Complete this function implementation",
+    "agent": "copilot"
+  },
+  {
+    "task": "Suggest improvements for this code snippet",
+    "agent": "copilot"
+  },
+  {
+    "task": "Inline hint: how do I use this hook?",
+    "agent": "copilot"
+  },
+  {
+    "task": "Format and lint this file",
+    "agent": "copilot"
+  },
+  {
+    "task": "Extract this logic into a separate function",
+    "agent": "copilot"
+  },
+  {
+    "task": "Small change: fix the typo in the error message",
+    "agent": "copilot"
+  },
+  {
+    "task": "Type definition for this object",
+    "agent": "copilot"
+  },
+  {
+    "task": "Clean up this function - it's too long",
+    "agent": "copilot"
+  },
+  {
+    "task": "Draft a quick API spec to review",
+    "agent": "ollama"
+  },
+  {
+    "task": "Sketch out the database schema ideas",
+    "agent": "ollama"
+  },
+  {
+    "task": "Brainstorm feature names for the new product",
+    "agent": "ollama"
+  },
+  {
+    "task": "Fast prototype of the UI concept",
+    "agent": "ollama"
+  },
+  {
+    "task": "Offline draft: write the README outline",
+    "agent": "ollama"
+  },
+  {
+    "task": "Mock the API responses for testing",
+    "agent": "ollama"
+  },
+  {
+    "task": "Template for the new React component",
+    "agent": "ollama"
+  },
+  {
+    "task": "Boilerplate for the Express server",
+    "agent": "ollama"
+  },
+  {
+    "task": "Generate ideas for the landing page copy",
+    "agent": "ollama"
+  },
+  {
+    "task": "Rough draft of the data models",
+    "agent": "ollama"
+  },
+  {
+    "task": "Quickly build and deploy auth across 3 files",
+    "agent": "kimi"
+  },
+  {
+    "task": "Research best practices then implement them",
+    "agent": "kimi"
+  },
+  {
+    "task": "Draft a quick prototype API with tests",
+    "agent": "kimi"
+  },
+  {
+    "task": "Review and refactor this single module deeply",
+    "agent": "codex"
+  },
+  {
+    "task": "Fix the bug, document the root cause, and update the wiki",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build a complete user dashboard from scratch",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement the core business logic module",
+    "agent": "codex"
+  },
+  {
+    "task": "Set up the entire development environment",
+    "agent": "kimi"
+  },
+  {
+    "task": "Analyze and fix performance across the stack",
+    "agent": "kimi"
+  },
+  {
+    "task": "Create a comprehensive architecture RFC",
+    "agent": "claude"
+  },
+  {
+    "task": "Autonomous implementation of the payment flow",
+    "agent": "codex"
+  },
+  {
+    "task": "End-to-end feature: user registration system",
+    "agent": "codex"
+  },
+  {
+    "task": "Focused module: build the notification service",
+    "agent": "codex"
+  },
+  {
+    "task": "From scratch: implement JWT authentication",
+    "agent": "codex"
+  },
+  {
+    "task": "Single module deep dive: optimize the search indexer",
+    "agent": "codex"
+  },
+  {
+    "task": "Quick format this file and rename variables",
+    "agent": "copilot"
+  },
+  {
+    "task": "Document the security audit findings",
+    "agent": "claude"
+  },
+  {
+    "task": "Strategy for handling high traffic spikes",
+    "agent": "claude"
+  },
+  {
+    "task": "Deep research into compliance requirements",
+    "agent": "claude"
+  },
+  {
+    "task": "Batch process all image uploads with validation",
+    "agent": "kimi"
+  },
+  {
+    "task": "Build authentication module from scratch",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement auth across frontend, backend, and mobile",
+    "agent": "kimi"
+  },
+  {
+    "task": "Research auth patterns then build the implementation",
+    "agent": "kimi"
+  },
+  {
+    "task": "Quick auth fix: rename the token variable",
+    "agent": "copilot"
+  },
+  {
+    "task": "Draft the auth flow specification for review",
+    "agent": "ollama"
+  },
+  {
+    "task": "Deep dive into OAuth2 implementation strategy",
+    "agent": "claude"
+  },
+  {
+    "task": "Create the payment service module",
+    "agent": "codex"
+  },
+  {
+    "task": "Integrate payment processing across all services",
+    "agent": "kimi"
+  },
+  {
+    "task": "Quick payment validation fix",
+    "agent": "copilot"
+  },
+  {
+    "task": "Research PCI compliance requirements",
+    "agent": "claude"
+  },
+  {
+    "task": "Sketch payment flow ideas",
+    "agent": "ollama"
+  },
+  {
+    "task": "Build the notification service end-to-end",
+    "agent": "codex"
+  },
+  {
+    "task": "Add notifications to web, mobile, and email",
+    "agent": "kimi"
+  },
+  {
+    "task": "Document notification architecture decisions",
+    "agent": "claude"
+  },
+  {
+    "task": "Quick notification type fix",
+    "agent": "copilot"
+  },
+  {
+    "task": "Mock notification templates for testing",
+    "agent": "ollama"
+  },
+  {
+    "task": "Implement search indexer module",
+    "agent": "codex"
+  },
+  {
+    "task": "Deploy search across all environments",
+    "agent": "kimi"
+  },
+  {
+    "task": "Analyze search algorithm trade-offs",
+    "agent": "claude"
+  },
+  {
+    "task": "Quick search query optimization",
+    "agent": "copilot"
+  },
+  {
+    "task": "Draft search UX concepts",
+    "agent": "ollama"
+  },
+  {
+    "task": "Build the caching layer module",
+    "agent": "codex"
+  },
+  {
+    "task": "Configure caching infrastructure across regions",
+    "agent": "kimi"
+  },
+  {
+    "task": "Evaluate Redis vs Memcached for our use case",
+    "agent": "claude"
+  },
+  {
+    "task": "Inline hint: how does this cache work?",
+    "agent": "copilot"
+  },
+  {
+    "task": "Prototype caching strategies locally",
+    "agent": "ollama"
+  },
+  {
+    "task": "Implement user management module",
+    "agent": "codex"
+  },
+  {
+    "task": "Migrate user data across three databases",
+    "agent": "kimi"
+  },
+  {
+    "task": "Research GDPR compliance for user data",
+    "agent": "claude"
+  },
+  {
+    "task": "Extract user validation into helper function",
+    "agent": "copilot"
+  }
 ]
