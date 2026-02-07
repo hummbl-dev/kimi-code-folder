@@ -1,0 +1,19 @@
+{
+  "best_weights": [
+    0.0,
+    0.4,
+    0.6,
+    0.0
+  ],
+  "accuracy": 0.875,
+  "n_train": 237,
+  "n_test": 56,
+  "seed": 42,
+  "agent_distribution": {
+    "kimi": 79,
+    "claude": 65,
+    "copilot": 36,
+    "ollama": 69,
+    "codex": 44
+  }
+}

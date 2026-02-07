@@ -1,5 +1,45 @@
 [
   {
+    "task": "Build a REST API for user management with full CRUD",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement a WebSocket chat server from this spec",
+    "agent": "codex"
+  },
+  {
+    "task": "Create a CLI tool that converts markdown to HTML",
+    "agent": "codex"
+  },
+  {
+    "task": "Fix the race condition bug in the connection pool",
+    "agent": "codex"
+  },
+  {
+    "task": "Build the payment processing module end to end",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement OAuth2 flow from scratch with tests",
+    "agent": "codex"
+  },
+  {
+    "task": "Create a database migration script for PostgreSQL",
+    "agent": "codex"
+  },
+  {
+    "task": "Build a file upload service with validation",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement rate limiting middleware for Express",
+    "agent": "codex"
+  },
+  {
+    "task": "Develop a caching layer with Redis integration",
+    "agent": "codex"
+  },
+  {
     "task": "Implement authentication across 5 microservices",
     "agent": "kimi"
   },
@@ -172,8 +212,20 @@
     "agent": "kimi"
   },
   {
+    "task": "Review and refactor this single module deeply",
+    "agent": "codex"
+  },
+  {
     "task": "Fix the bug, document the root cause, and update the wiki",
     "agent": "kimi"
+  },
+  {
+    "task": "Build a complete user dashboard from scratch",
+    "agent": "codex"
+  },
+  {
+    "task": "Implement the core business logic module",
+    "agent": "codex"
   },
   {
     "task": "Set up the entire development environment",
@@ -186,6 +238,26 @@
   {
     "task": "Create a comprehensive architecture RFC",
     "agent": "claude"
+  },
+  {
+    "task": "Autonomous implementation of the payment flow",
+    "agent": "codex"
+  },
+  {
+    "task": "End-to-end feature: user registration system",
+    "agent": "codex"
+  },
+  {
+    "task": "Focused module: build the notification service",
+    "agent": "codex"
+  },
+  {
+    "task": "From scratch: implement JWT authentication",
+    "agent": "codex"
+  },
+  {
+    "task": "Single module deep dive: optimize the search indexer",
+    "agent": "codex"
   },
   {
     "task": "Quick format this file and rename variables",
@@ -208,6 +280,10 @@
     "agent": "kimi"
   },
   {
+    "task": "Build authentication module from scratch",
+    "agent": "codex"
+  },
+  {
     "task": "Implement auth across frontend, backend, and mobile",
     "agent": "kimi"
   },
@@ -228,6 +304,10 @@
     "agent": "claude"
   },
   {
+    "task": "Create the payment service module",
+    "agent": "codex"
+  },
+  {
     "task": "Integrate payment processing across all services",
     "agent": "kimi"
   },
@@ -242,6 +322,10 @@
   {
     "task": "Sketch payment flow ideas",
     "agent": "ollama"
+  },
+  {
+    "task": "Build the notification service end-to-end",
+    "agent": "codex"
   },
   {
     "task": "Add notifications to web, mobile, and email",
@@ -260,6 +344,10 @@
     "agent": "ollama"
   },
   {
+    "task": "Implement search indexer module",
+    "agent": "codex"
+  },
+  {
     "task": "Deploy search across all environments",
     "agent": "kimi"
   },
@@ -276,6 +364,10 @@
     "agent": "ollama"
   },
   {
+    "task": "Build the caching layer module",
+    "agent": "codex"
+  },
+  {
     "task": "Configure caching infrastructure across regions",
     "agent": "kimi"
   },
@@ -290,6 +382,10 @@
   {
     "task": "Prototype caching strategies locally",
     "agent": "ollama"
+  },
+  {
+    "task": "Implement user management module",
+    "agent": "codex"
   },
   {
     "task": "Migrate user data across three databases",
@@ -384,40 +480,80 @@
     "agent": "kimi"
   },
   {
+    "task": "Build user authentication module",
+    "agent": "codex"
+  },
+  {
     "task": "Implement auth across web iOS and Android",
     "agent": "kimi"
+  },
+  {
+    "task": "Create payment processing service",
+    "agent": "codex"
   },
   {
     "task": "Integrate payments with fraud detection",
     "agent": "kimi"
   },
   {
+    "task": "Build notification dispatch service",
+    "agent": "codex"
+  },
+  {
     "task": "Connect notifications to email SMS push",
     "agent": "kimi"
+  },
+  {
+    "task": "Implement search indexing service",
+    "agent": "codex"
   },
   {
     "task": "Deploy search across all regions",
     "agent": "kimi"
   },
   {
+    "task": "Build caching middleware",
+    "agent": "codex"
+  },
+  {
     "task": "Configure cache invalidation across services",
     "agent": "kimi"
+  },
+  {
+    "task": "Create file upload handler",
+    "agent": "codex"
   },
   {
     "task": "Handle uploads with virus scanning and CDN",
     "agent": "kimi"
   },
   {
+    "task": "Build webhook processing service",
+    "agent": "codex"
+  },
+  {
     "task": "Process webhooks with retry logic across queues",
     "agent": "kimi"
+  },
+  {
+    "task": "Implement analytics aggregation service",
+    "agent": "codex"
   },
   {
     "task": "Stream analytics to warehouse and real-time dashboards",
     "agent": "kimi"
   },
   {
+    "task": "Build rate limiting service",
+    "agent": "codex"
+  },
+  {
     "task": "Apply rate limits per user tier and endpoint",
     "agent": "kimi"
+  },
+  {
+    "task": "Create audit logging service",
+    "agent": "codex"
   },
   {
     "task": "Log audits to immutable store with alerting",
@@ -834,341 +970,5 @@
   {
     "task": "Map user flows then build the interface",
     "agent": "kimi"
-  },
-  {
-    "task": "Build a REST API for user management with full CRUD",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement a WebSocket chat server from this spec",
-    "agent": "codex"
-  },
-  {
-    "task": "Create a CLI tool that converts markdown to HTML",
-    "agent": "codex"
-  },
-  {
-    "task": "Fix the race condition bug in the connection pool",
-    "agent": "codex"
-  },
-  {
-    "task": "Build the payment processing module end to end",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement OAuth2 flow from scratch with tests",
-    "agent": "codex"
-  },
-  {
-    "task": "Create a database migration script for PostgreSQL",
-    "agent": "codex"
-  },
-  {
-    "task": "Build a file upload service with validation",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement rate limiting middleware for Express",
-    "agent": "codex"
-  },
-  {
-    "task": "Develop a caching layer with Redis integration",
-    "agent": "codex"
-  },
-  {
-    "task": "Review and refactor this single module deeply",
-    "agent": "codex"
-  },
-  {
-    "task": "Build a complete user dashboard from scratch",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement the core business logic module",
-    "agent": "codex"
-  },
-  {
-    "task": "Autonomous implementation of the payment flow",
-    "agent": "codex"
-  },
-  {
-    "task": "End-to-end feature: user registration system",
-    "agent": "codex"
-  },
-  {
-    "task": "Focused module: build the notification service",
-    "agent": "codex"
-  },
-  {
-    "task": "From scratch: implement JWT authentication",
-    "agent": "codex"
-  },
-  {
-    "task": "Single module deep dive: optimize the search indexer",
-    "agent": "codex"
-  },
-  {
-    "task": "Build authentication module from scratch",
-    "agent": "codex"
-  },
-  {
-    "task": "Create the payment service module",
-    "agent": "codex"
-  },
-  {
-    "task": "Build the notification service end-to-end",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement search indexer module",
-    "agent": "codex"
-  },
-  {
-    "task": "Build the caching layer module",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement user management module",
-    "agent": "codex"
-  },
-  {
-    "task": "Build user authentication module",
-    "agent": "codex"
-  },
-  {
-    "task": "Create payment processing service",
-    "agent": "codex"
-  },
-  {
-    "task": "Build notification dispatch service",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement search indexing service",
-    "agent": "codex"
-  },
-  {
-    "task": "Build caching middleware",
-    "agent": "codex"
-  },
-  {
-    "task": "Create file upload handler",
-    "agent": "codex"
-  },
-  {
-    "task": "Build webhook processing service",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement analytics aggregation service",
-    "agent": "codex"
-  },
-  {
-    "task": "Build rate limiting service",
-    "agent": "codex"
-  },
-  {
-    "task": "Create audit logging service",
-    "agent": "codex"
-  },
-  {
-    "task": "Research the pros and cons of microservices vs monolith architecture for our platform",
-    "agent": "claude"
-  },
-  {
-    "task": "Analyze our API response times and create a performance optimization strategy",
-    "agent": "claude"
-  },
-  {
-    "task": "Write a comprehensive security audit report for the authentication system",
-    "agent": "claude"
-  },
-  {
-    "task": "Evaluate trade-offs between PostgreSQL and MongoDB for our data layer",
-    "agent": "claude"
-  },
-  {
-    "task": "Deep dive into our technical debt and create a prioritized remediation plan",
-    "agent": "claude"
-  },
-  {
-    "task": "Compare three different caching strategies and recommend one with justification",
-    "agent": "claude"
-  },
-  {
-    "task": "Create an architecture decision record for switching from REST to GraphQL",
-    "agent": "claude"
-  },
-  {
-    "task": "Assess the long-term maintainability implications of our current testing approach",
-    "agent": "claude"
-  },
-  {
-    "task": "Document the threat model for our payment processing pipeline",
-    "agent": "claude"
-  },
-  {
-    "task": "Review and summarize the latest OWASP top 10 vulnerabilities relevant to our stack",
-    "agent": "claude"
-  },
-  {
-    "task": "Build a user authentication service with JWT tokens and refresh flow from scratch",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement a complete CRUD API for the inventory management module",
-    "agent": "codex"
-  },
-  {
-    "task": "Create a WebSocket notification service as a focused single module",
-    "agent": "codex"
-  },
-  {
-    "task": "Build an end-to-end file upload service with S3 integration and validation",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement the payment processing middleware with Stripe webhook handling",
-    "agent": "codex"
-  },
-  {
-    "task": "Create a Redis caching layer module for the product catalog service",
-    "agent": "codex"
-  },
-  {
-    "task": "Build an OAuth2 authorization server from scratch as an autonomous module",
-    "agent": "codex"
-  },
-  {
-    "task": "Implement a rate limiting middleware service with per-endpoint configuration",
-    "agent": "codex"
-  },
-  {
-    "task": "Create a database migration module for transitioning from MySQL to PostgreSQL",
-    "agent": "codex"
-  },
-  {
-    "task": "Build a search indexing service using Elasticsearch with autocomplete",
-    "agent": "codex"
-  },
-  {
-    "task": "Rename the getUserData function to fetchUserProfile across the codebase",
-    "agent": "copilot"
-  },
-  {
-    "task": "Add TypeScript type definitions for the API response interfaces",
-    "agent": "copilot"
-  },
-  {
-    "task": "Fix the lint errors in the utils/validation.ts file",
-    "agent": "copilot"
-  },
-  {
-    "task": "Extract the email validation logic into a reusable utility function",
-    "agent": "copilot"
-  },
-  {
-    "task": "Suggest improvements for the error handling in this single function",
-    "agent": "copilot"
-  },
-  {
-    "task": "Complete the JSDoc comments for the authentication module exports",
-    "agent": "copilot"
-  },
-  {
-    "task": "Quick fix: the date formatting helper returns wrong timezone offset",
-    "agent": "copilot"
-  },
-  {
-    "task": "Clean up unused imports and format the components directory",
-    "agent": "copilot"
-  },
-  {
-    "task": "Add inline type hints to the Python configuration loader class",
-    "agent": "copilot"
-  },
-  {
-    "task": "Review this small pull request that changes the retry logic in one file",
-    "agent": "copilot"
-  },
-  {
-    "task": "Deploy the updated API across all three environments then run integration tests",
-    "agent": "kimi"
-  },
-  {
-    "task": "Set up the CI/CD pipeline with GitHub Actions including test, lint, build, and deploy stages",
-    "agent": "kimi"
-  },
-  {
-    "task": "Refactor the entire authentication flow across the frontend and backend services",
-    "agent": "kimi"
-  },
-  {
-    "task": "Configure Docker Compose for local development with hot reload across all services",
-    "agent": "kimi"
-  },
-  {
-    "task": "Migrate the database schema and update all affected API endpoints and tests",
-    "agent": "kimi"
-  },
-  {
-    "task": "Debug the intermittent 502 errors in production and implement a fix across the infrastructure",
-    "agent": "kimi"
-  },
-  {
-    "task": "Set up monitoring with Prometheus and Grafana dashboards for all microservices",
-    "agent": "kimi"
-  },
-  {
-    "task": "Implement parallel batch processing for the data import pipeline across multiple files",
-    "agent": "kimi"
-  },
-  {
-    "task": "Configure Kubernetes manifests and deploy the application to the staging cluster",
-    "agent": "kimi"
-  },
-  {
-    "task": "Build and deploy the entire notification system integrating email, SMS, and push services",
-    "agent": "kimi"
-  },
-  {
-    "task": "Draft a rough prototype of the landing page layout",
-    "agent": "ollama"
-  },
-  {
-    "task": "Brainstorm five different approaches to implementing the search feature",
-    "agent": "ollama"
-  },
-  {
-    "task": "Sketch out a quick mock of the user onboarding flow",
-    "agent": "ollama"
-  },
-  {
-    "task": "Generate some placeholder content for the blog post template",
-    "agent": "ollama"
-  },
-  {
-    "task": "Create a rough draft of the error message copy for the form validations",
-    "agent": "ollama"
-  },
-  {
-    "task": "Experiment with different sorting algorithm implementations locally",
-    "agent": "ollama"
-  },
-  {
-    "task": "Stub out the API response types before the backend team finalizes the spec",
-    "agent": "ollama"
-  },
-  {
-    "task": "Prototype a quick command-line tool for parsing CSV files offline",
-    "agent": "ollama"
-  },
-  {
-    "task": "Mock the third-party payment API responses for local testing",
-    "agent": "ollama"
-  },
-  {
-    "task": "Generate boilerplate template for the new React component structure",
-    "agent": "ollama"
   }
 ]

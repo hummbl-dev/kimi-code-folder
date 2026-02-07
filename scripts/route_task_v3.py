@@ -60,7 +60,10 @@ AGENT_TAXONOMY = {
             "from scratch", "single module", "focused", "draft", "sketch",
             "brainstorm", "research", "analyze", "document", "compare",
             "evaluate trade", "deep dive", "summarize", "quick fix",
-            "inline", "hint", "rename", "small change", "snippet"
+            "inline", "hint", "rename", "small change", "snippet",
+            "pros and cons", "trade-off", "assess", "strategy",
+            "decision record", "specification", "rfc", "adr",
+            "security audit", "threat model", "whitepaper"
         ],
         "weight": 1.0,
         "complexity_bias": "high"
@@ -72,17 +75,27 @@ AGENT_TAXONOMY = {
             "summarize", "assess", "strategy", "plan", "rfc", "adr",
             "trade-off", "pros cons", "long-term", "security audit",
             "threat model", "literature", "specification", "whitepaper",
-            "decision record", "technical debt"
+            "decision record", "technical debt", "investigate",
+            "comprehensive", "approaches", "options", "audit",
+            "vulnerabilities", "optimization plan", "recommend"
         ],
         "phrase_patterns": [
             "evaluate trade", "pros and cons", "deep dive into", "compare vs",
             "assess the", "create a plan", "strategy for", "research into",
             "analyze the", "document the", "architecture decision",
-            "comprehensive architecture", "assess technical", "debt and create"
+            "comprehensive architecture", "assess technical", "debt and create",
+            "create an architecture", "create a comprehensive", "create adr",
+            "write a comprehensive", "security audit", "threat model",
+            "investigate", "optimization strategy", "optimization plan",
+            "decision record", "assess system", "review and summarize",
+            "analyze payment", "evaluate database", "compare three",
+            "specification for", "examine"
         ],
         "negative_keywords": [
-            "implement", "build", "deploy", "fix", "create", "migrate",
-            "quick", "snippet", "inline", "draft", "sketch", "mock"
+            "implement", "build", "deploy", "fix", "migrate",
+            "quick", "snippet", "inline", "draft", "sketch", "mock",
+            "configure", "install", "execute", "run", "setup",
+            "docker", "kubernetes", "ci", "cd", "pipeline"
         ],
         "weight": 1.0,
         "complexity_bias": "high"
@@ -344,11 +357,11 @@ def keyword_score(task: str, agent: str) -> float:
     # Base keyword hits
     hits = sum(1 for kw in keywords if kw in task_lower)
     
-    # Phrase pattern bonus (stronger signal)
-    phrase_hits = sum(2 for phrase in phrases if phrase in task_lower)
+    # Phrase pattern bonus (strongest signal — phrases are highly discriminating)
+    phrase_hits = sum(3 for phrase in phrases if phrase in task_lower)
     
-    # Negative keyword penalty
-    penalty = sum(0.5 for neg in negatives if neg in task_lower)
+    # Negative keyword penalty (strong exclusion signal)
+    penalty = sum(1.0 for neg in negatives if neg in task_lower)
     
     max_possible = max(len(keywords), 1)
     score = ((hits + phrase_hits) / max_possible) * weight - penalty
